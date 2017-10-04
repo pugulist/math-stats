@@ -1,0 +1,31 @@
+{
+  "name": "math-stats",
+  "version": "0.1.0",
+  "description": "Mean, Median, Mode",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha --reporter spec"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pavanvamsi3/math-stats.git"
+  },
+  "keywords": [
+    "Statistics",
+    "Maths",
+    "Stats",
+    "Mean",
+    "Median",
+    "Mode"
+  ],
+  "author": "vamsi <pavanvamsi3@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/pavanvamsi3/math-stats/issues"
+  },
+  "homepage": "https://github.com/pavanvamsi3/math-stats#readme",
+  "devDependencies": {
+    "chai": "^4.1.2",
+    "mocha": "^4.0.0"
+  }
+}
