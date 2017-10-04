@@ -1,6 +1,6 @@
 {
   "name": "math-stats",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "description": "Mean, Median, Mode",
   "main": "index.js",
   "scripts": {
