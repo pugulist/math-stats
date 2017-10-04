@@ -3,11 +3,11 @@
 
 A small library that calculates mean, median and mode for your numbers
 
-## :nut_and_bolt: Installation :nut_and_bolt:
+## Installation
 
   `npm install @pavanvamsi/math-stats`
 
-## :pencil2: Usage :pencil2:
+## Usage
 
 ```javascript
 var stats = require('@pavanvamsi/math-stats');
@@ -17,7 +17,7 @@ var median = stats([1, 2, 3], 'median'); // returns 2
 var modes = stats([1, 2, 1, 3], 'mode'); // returns [1]
 ```
 
-## :cyclone: Tests :cyclone:
+## Tests
 
 
 `npm test`
