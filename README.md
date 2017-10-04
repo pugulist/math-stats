@@ -19,4 +19,14 @@ var modes = stats([1, 2, 1, 3], 'mode'); // returns [1]
 
 ## Tests
 
-  `npm test`
+
+`npm test`
+
+## Like it?
+
+:star: the repo and share.
+
+## License
+
+[MIT](https://github.com/pavanvamsi3/math-stats/blob/master/LICENSE) Copyright (c) 2017 Vamshi Krishna S
+
