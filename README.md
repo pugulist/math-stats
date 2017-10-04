@@ -13,11 +13,11 @@ A small library that calculates mean, median and mode for your numbers
 var stats = require('@pavanvamsi/math-stats');
 
 var numbers = [1, 2, 3];
-var modeNumbers = [1, 2, 1, 3];
+var moreNumbers = [1, 2, 1, 3];
 
 var mean = stats(numbers, 'mean'); // returns 2
 var median = stats(numbers, 'median'); // returns 2
-var modes = stats(modeNumbers, 'mode'); // returns [1]
+var modes = stats(moreNumbers, 'mode'); // returns [1]
 ```
 
 ## Tests
