@@ -1,4 +1,4 @@
-Math Stats
+:bar_chart: Math Stats :bar_chart:
 =========
 
 A small library that calculates mean, median and mode for your numbers
