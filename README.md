@@ -15,9 +15,9 @@ var stats = require('@pavanvamsi/math-stats');
 var numbers = [1, 2, 3];
 var moreNumbers = [1, 2, 1, 3];
 
-var mean = stats(numbers, 'mean'); // returns 2
-var median = stats(numbers, 'median'); // returns 2
-var modes = stats(moreNumbers, 'mode'); // returns [1]
+var mean = stats.mean(numbers); // returns 2
+var median = stats.median(numbers); // returns 2
+var modes = stats.mode(moreNumbers); // returns [1]
 ```
 
 ## Tests
