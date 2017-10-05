@@ -20,5 +20,13 @@ describe('#stats', function() {
                 var result = stats.mean([1, 2, 3]);
                 expect(result).to.equal(2);
         });
+        it('should return 0.816', function() {
+                var result = stats.standardDeviation([1, 2, 3]);
+                expect(result).to.equal(0.816496580927726);
+        })
+        it('should return 0.666', function() {
+                var result = stats.variance([1, 2, 3]);
+                expect(result).to.equal(0.6666666666666666);
+        })
 });
 

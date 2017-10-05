@@ -49,8 +49,33 @@ var mode = numbers => {
     return modes;
 }
 
+var standardDeviation = numbers => {
+    if (!Array.isArray(numbers)) {
+        return null;
+    }
+
+    return Math.sqrt(variance(numbers));
+}
+
+var variance = numbers => {
+    if (!Array.isArray(numbers)) {
+        return null;
+    }
+    var initialMean = mean(numbers);
+    var varianceNumbersArray = [], i;
+    for(i = 0; i < numbers.length; i += 1) {
+        var varianceNumber = numbers[i] - initialMean;
+        varianceNumbersArray.push(varianceNumber * varianceNumber);
+    }
+    var variance = mean(varianceNumbersArray);
+
+    return variance;
+}
+
 module.exports = {
     mean: mean,
     median: median,
-    mode: mode
+    mode: mode,
+    standardDeviation: standardDeviation,
+    variance: variance
 }
