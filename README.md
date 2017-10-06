@@ -1,4 +1,4 @@
-:bar_chart: Math Stats :bar_chart:
+:bar_chart: Math Stats [![Build Status](https://travis-ci.org/pavanvamsi3/math-stats.svg?branch=sd_and_variance)](https://travis-ci.org/pavanvamsi3/math-stats)
 =========
 
 A small library that calculates mean, median and mode for your numbers
