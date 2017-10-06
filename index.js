@@ -4,18 +4,18 @@
  * Mean, Median, Mode
  */
 
-var mean = numbers => {
+let mean = numbers => {
     if (!Array.isArray(numbers)) {
         return null;
     }
     return numbers.reduce((pv, cv) => pv + cv, 0) / numbers.length;
 }
 
-var median = numbers => {
+let median = numbers => {
     if (!Array.isArray(numbers)) {
         return null;
     }
-    var median = 0, numsLen = numbers.length;
+    let median = 0, numsLen = numbers.length;
     numbers.sort();
 
     if (numbers.length % 2 == 0) {
@@ -26,19 +26,19 @@ var median = numbers => {
     return median;
 }
 
-var mode = numbers => {
+let mode = numbers => {
     if (!Array.isArray(numbers)) {
         return null;
     }
-    var modes = [], count = [], i, number, maxIndex = 0;
-    for (i = 0; i < numbers.length; i += 1) {
-        number = numbers[i];
-        count[number] = (count[number] || 0) + 1;
-        if (count[number] > maxIndex) {
-            maxIndex = count[number];
-        }
+    let modes = [], count = [], maxIndex = 0;
+
+    for (let value of numbers) {
+        count[value] = (count[value] || 0) + 1;
+        if (count[value] > maxIndex)
+            maxIndex = count[value];
     }
-    for (i in count) {
+
+    for (let i of numbers) {
         if (count.hasOwnProperty(i)) {
             if (count[i] === maxIndex) {
                 modes.push(Number(i));
@@ -49,7 +49,7 @@ var mode = numbers => {
     return modes;
 }
 
-var standardDeviation = numbers => {
+let standardDeviation = numbers => {
     if (!Array.isArray(numbers)) {
         return null;
     }
@@ -57,17 +57,17 @@ var standardDeviation = numbers => {
     return Math.sqrt(variance(numbers));
 }
 
-var variance = numbers => {
+let variance = numbers => {
     if (!Array.isArray(numbers)) {
         return null;
     }
-    var initialMean = mean(numbers);
-    var varianceNumbersArray = [], i;
+    let initialMean = mean(numbers);
+    let varianceNumbersArray = [], i;
     for(i = 0; i < numbers.length; i += 1) {
-        var varianceNumber = numbers[i] - initialMean;
+        let varianceNumber = numbers[i] - initialMean;
         varianceNumbersArray.push(varianceNumber * varianceNumber);
     }
-    var variance = mean(varianceNumbersArray);
+    let variance = mean(varianceNumbersArray);
 
     return variance;
 }
