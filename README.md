@@ -5,7 +5,7 @@ A small library that calculates mean, median and mode for your numbers
 
 ### Installation
 
-  `npm install @pavanvamsi/math-stats`
+  `npm install math-stats`
 
 ### Usage
 
