@@ -1,4 +1,4 @@
-Math Stats [![Build Status](https://travis-ci.org/pavanvamsi3/math-stats.svg?branch=sd_and_variance)](https://travis-ci.org/pavanvamsi3/math-stats)
+Math Stats [![Build Status](https://travis-ci.org/pavanvamsi3/math-stats.svg?branch=sd_and_variance)](https://travis-ci.org/pavanvamsi3/math-stats)  [![Coverage Status](https://coveralls.io/repos/github/pavanvamsi3/math-stats/badge.svg?branch=master)](https://coveralls.io/github/pavanvamsi3/math-stats?branch=master)
 =========
 
 A small library that calculates mean, median and mode for your numbers
