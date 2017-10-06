@@ -32,7 +32,7 @@ describe('#stats', function() {
     });
     it('Empty array', function() {
         var result = stats.median([]);
-        result = Object.is(result, NaN)
+        result = Object.is(result, NaN);
         expect(result).to.equal(true);
     });
 });
