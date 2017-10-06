@@ -30,5 +30,10 @@ describe('#stats', function() {
         var result = stats.variance([1, 2, 3]);
         expect(result).to.equal(0.6666666666666666);
     });
+    it('Empty array', function() {
+        var result = stats.median([]);
+        result = Object.is(result, NaN)
+        expect(result).to.equal(true);
+    });
 });
 
