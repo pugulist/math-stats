@@ -1,15 +1,13 @@
 'use strict';
 
-/**
- * Mean, Median, Mode
- */
+/*global module:true*/
 
 let mean = numbers => {
     if (!Array.isArray(numbers)) {
         return null;
     }
     return numbers.reduce((pv, cv) => pv + cv, 0) / numbers.length;
-}
+};
 
 let median = numbers => {
     if (!Array.isArray(numbers)) {
@@ -24,7 +22,7 @@ let median = numbers => {
         median = numbers[(numsLen - 1) / 2];
     }
     return median;
-}
+};
 
 let mode = numbers => {
     if (!Array.isArray(numbers)) {
@@ -47,7 +45,7 @@ let mode = numbers => {
     }
 
     return modes;
-}
+};
 
 let standardDeviation = numbers => {
     if (!Array.isArray(numbers)) {
@@ -55,7 +53,7 @@ let standardDeviation = numbers => {
     }
 
     return Math.sqrt(variance(numbers));
-}
+};
 
 let variance = numbers => {
     if (!Array.isArray(numbers)) {
@@ -70,7 +68,7 @@ let variance = numbers => {
     let variance = mean(varianceNumbersArray);
 
     return variance;
-}
+};
 
 module.exports = {
     mean: mean,
@@ -78,4 +76,4 @@ module.exports = {
     mode: mode,
     standardDeviation: standardDeviation,
     variance: variance
-}
+};
