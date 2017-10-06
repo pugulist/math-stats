@@ -30,6 +30,8 @@ var variance = stats.variance(numbers); // returns 0.6666666666666666
 
 :star: the repo and share.
 
+ [Link to npm package](https://www.npmjs.com/package/math-stats)
+
 ### License
 
 [MIT](https://github.com/pavanvamsi3/math-stats/blob/master/LICENSE) Copyright (c) 2017 Vamshi Krishna S
