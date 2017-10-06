@@ -60,9 +60,10 @@ let variance = numbers => {
         return null;
     }
     let initialMean = mean(numbers);
-    let varianceNumbersArray = [], i;
-    for(i = 0; i < numbers.length; i += 1) {
-        let varianceNumber = numbers[i] - initialMean;
+    let varianceNumbersArray = [];
+
+    for (let value of numbers) {
+        let varianceNumber = value - initialMean;
         varianceNumbersArray.push(varianceNumber * varianceNumber);
     }
     let variance = mean(varianceNumbersArray);
