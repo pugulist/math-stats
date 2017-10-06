@@ -35,5 +35,9 @@ describe('#stats', function() {
         result = Object.is(result, NaN);
         expect(result).to.equal(true);
     });
+    it('Harmonic Mean', function() {
+        var result = stats.harmonicMean([1, 2, 3]);
+        expect(result).to.equal(1.6363636363636365);
+    });
 });
 

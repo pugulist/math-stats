@@ -1,7 +1,7 @@
 Math Stats [![Build Status](https://travis-ci.org/pavanvamsi3/math-stats.svg?branch=sd_and_variance)](https://travis-ci.org/pavanvamsi3/math-stats)  [![Coverage Status](https://coveralls.io/repos/github/pavanvamsi3/math-stats/badge.svg?branch=master)](https://coveralls.io/github/pavanvamsi3/math-stats?branch=master)
 =========
 
-A small library that calculates mean, median and mode for your numbers
+A small library that does statistics for your numbers
 
 ### Installation
 
@@ -20,6 +20,7 @@ var median = stats.median(numbers); // returns 2
 var modes = stats.mode(moreNumbers); // returns [1]
 var standardDeviation = stats.standardDeviation(numbers); // returns 0.816496580927726
 var variance = stats.variance(numbers); // returns 0.6666666666666666
+var harmonicMean = stats.harmonicMean(numbers); returns 1.6363636363636365
 ```
 
 ### Tests

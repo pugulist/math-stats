@@ -71,10 +71,22 @@ let variance = numbers => {
     return variance;
 };
 
+let harmonicMean = numbers => {
+    if (!Array.isArray(numbers)) {
+        return null;
+    }
+    let total = numbers.reduce(function(sum, value) {
+        return sum + (1/value);
+    }, 0);
+
+    return numbers.length/total;
+};
+
 module.exports = {
     mean: mean,
     median: median,
     mode: mode,
     standardDeviation: standardDeviation,
-    variance: variance
+    variance: variance,
+    harmonicMean: harmonicMean
 };
