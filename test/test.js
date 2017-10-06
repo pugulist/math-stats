@@ -7,11 +7,31 @@ var stats = require('../index');
 
 describe('#stats', function() {
     it('Median', function() {
-        var result = stats.median([1,2,3]);
+        var result = stats.median([1, 2, 3]);
         expect(result).to.equal(2);
     });
-    it('Not an array error', function() {
+    it('Median with even length array', function() {
+        var result = stats.median([1, 2, 3, 4]);
+        expect(result).to.equal(2.5);
+    });
+    it('Not an array error median', function() {
         var result = stats.median(1);
+        expect(result).to.equal(null);
+    });
+    it('Not an array error mean', function() {
+        var result = stats.mean(1);
+        expect(result).to.equal(null);
+    });
+    it('Not an array error mode', function() {
+        var result = stats.mode(1);
+        expect(result).to.equal(null);
+    });
+    it('Not an array error variance', function() {
+        var result = stats.variance(1);
+        expect(result).to.equal(null);
+    });
+    it('Not an array error harmonic mean', function() {
+        var result = stats.harmonicMean(1);
         expect(result).to.equal(null);
     });
     it('Mode', function() {

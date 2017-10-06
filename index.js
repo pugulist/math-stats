@@ -48,10 +48,6 @@ let mode = numbers => {
 };
 
 let standardDeviation = numbers => {
-    if (!Array.isArray(numbers)) {
-        return null;
-    }
-
     return Math.sqrt(variance(numbers));
 };
 
