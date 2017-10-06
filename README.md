@@ -13,13 +13,19 @@ A small library that does statistics for your numbers
 var stats = require('@pavanvamsi/math-stats');
 
 var numbers = [1, 2, 3];
+
 var moreNumbers = [1, 2, 1, 3];
 
 var mean = stats.mean(numbers); // returns 2
+
 var median = stats.median(numbers); // returns 2
+
 var modes = stats.mode(moreNumbers); // returns [1]
+
 var standardDeviation = stats.standardDeviation(numbers); // returns 0.816496580927726
+
 var variance = stats.variance(numbers); // returns 0.6666666666666666
+
 var harmonicMean = stats.harmonicMean(numbers); // returns 1.6363636363636365
 ```
 
