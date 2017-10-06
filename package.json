@@ -1,7 +1,7 @@
 {
   "name": "math-stats",
-  "version": "0.2.4",
-  "description": "Mean, Median, Mode",
+  "version": "0.2.5",
+  "description": "Statistics for your numbers",
   "main": "index.js",
   "scripts": {
     "test": "mocha --reporter spec",
