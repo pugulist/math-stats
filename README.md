@@ -20,7 +20,7 @@ var median = stats.median(numbers); // returns 2
 var modes = stats.mode(moreNumbers); // returns [1]
 var standardDeviation = stats.standardDeviation(numbers); // returns 0.816496580927726
 var variance = stats.variance(numbers); // returns 0.6666666666666666
-var harmonicMean = stats.harmonicMean(numbers); returns 1.6363636363636365
+var harmonicMean = stats.harmonicMean(numbers); // returns 1.6363636363636365
 ```
 
 ### Tests
