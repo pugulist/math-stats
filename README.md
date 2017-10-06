@@ -24,11 +24,7 @@ var variance = stats.variance(numbers); // returns 0.6666666666666666
 
 ### Tests
 
-
 `npm test`
-
-### To do
-- [ ] :thinking:
 
 ### Like it? :see_no_evil:
 
