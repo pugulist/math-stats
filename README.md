@@ -35,7 +35,7 @@ var harmonicMean = stats.harmonicMean(numbers); // returns 1.6363636363636365
 
 ### To do
 
-- [ ] Geometric mean (Newton raphson method for finding the nth root? :thinking:)
+- [ ] Geometric mean ([Newton Raphson](https://en.wikipedia.org/wiki/Newton%27s_method) method for finding the nth root? :thinking:)
 
 ### Like it? :see_no_evil:
 
