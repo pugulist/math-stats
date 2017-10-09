@@ -3,6 +3,8 @@ Math Stats [![Build Status](https://travis-ci.org/pavanvamsi3/math-stats.svg?bra
 
 A small library that does statistics for your numbers
 
+![Math Joke](https://i0.wp.com/blog.datacamp.com/wp-content/uploads/2014/03/statistics.jpg)
+
 ### Installation
 
   `npm install math-stats`
