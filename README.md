@@ -33,6 +33,10 @@ var harmonicMean = stats.harmonicMean(numbers); // returns 1.6363636363636365
 
 `npm test`
 
+### To do
+
+- [ ] Geometric mean (Newton raphson method for finding the nth root? :thinking:)
+
 ### Like it? :see_no_evil:
 
 :star: the repo and share.
