@@ -78,11 +78,21 @@ let harmonicMean = numbers => {
     return numbers.length/total;
 };
 
+let geometricMean = numbers => {
+    if (!Array.isArray(numbers)) {
+        return null;
+    }
+    let product = numbers.reduce((pv, cv) => pv * cv);
+
+    return Math.pow(product, 1/numbers.length);
+};
+
 module.exports = {
     mean: mean,
     median: median,
     mode: mode,
     standardDeviation: standardDeviation,
     variance: variance,
-    harmonicMean: harmonicMean
+    harmonicMean: harmonicMean,
+    geometricMean: geometricMean
 };
