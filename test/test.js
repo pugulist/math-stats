@@ -34,6 +34,10 @@ describe('#stats', function() {
         var result = stats.harmonicMean(1);
         expect(result).to.equal(null);
     });
+    it('Not an array error geometric mean', function() {
+        var result = stats.geometricMean(1);
+        expect(result).to.equal(null);
+    });
     it('Mode', function() {
         var result = stats.mode([1, 2, 1, 3]);
         expect(result[0]).to.equal(1);
@@ -58,6 +62,10 @@ describe('#stats', function() {
     it('Harmonic Mean', function() {
         var result = stats.harmonicMean([1, 2, 3]);
         expect(result).to.equal(1.6363636363636365);
+    });
+    it('Geometric Mean', function() {
+        var result = stats.geometricMean([1, 2, 3]);
+        expect(result).to.equal(1.8171205928321397);
     });
 });
 
