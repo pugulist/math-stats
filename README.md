@@ -1,4 +1,4 @@
-Math Stats [![Build Status](https://travis-ci.org/pavanvamsi3/math-stats.svg?branch=sd_and_variance)](https://travis-ci.org/pavanvamsi3/math-stats) [![Coverage Status](https://coveralls.io/repos/github/pavanvamsi3/math-stats/badge.svg?branch=master)](https://coveralls.io/github/pavanvamsi3/math-stats?branch=master) [![Known Vulnerabilities](https://snyk.io/test/github/pavanvamsi3/math-stats/badge.svg)](https://snyk.io/test/github/pavanvamsi3/math-stats)
+Math Stats [![Build Status](https://travis-ci.org/pavanvamsi3/math-stats.svg?branch=sd_and_variance)](https://travis-ci.org/pavanvamsi3/math-stats) [![Coverage Status](https://coveralls.io/repos/github/pavanvamsi3/math-stats/badge.svg?branch=master)](https://coveralls.io/github/pavanvamsi3/math-stats?branch=master) [![Known Vulnerabilities](https://snyk.io/test/github/pavanvamsi3/math-stats/badge.svg)](https://snyk.io/test/github/pavanvamsi3/math-stats) [![NPM Downloads](https://img.shields.io/npm/dm/math-stats.svg?style=flat)](https://www.npmjs.com/package/math-stats)
 =========
 
 A small library that does statistics for your numbers
