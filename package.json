@@ -1,6 +1,6 @@
 {
   "name": "math-stats",
-  "version": "0.2.8",
+  "version": "0.2.9",
   "description": "Statistics for your numbers",
   "main": "index.js",
   "scripts": {

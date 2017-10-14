@@ -67,5 +67,14 @@ describe('#stats', function() {
         var result = stats.geometricMean([1, 2, 3]);
         expect(result).to.equal(1.8171205928321397);
     });
+    it('Strings for mode', function() {
+        var result = stats.mode(['red', 'blue', 'red', 'blue']);
+        expect(result[0]).to.equal('red');
+    });
+    it('Strings for mode 2', function() {
+        var result = stats.mode(['red', 'blue', 'red', 'blue']);
+        expect(result[0]).to.equal('red');
+        expect(result[1]).to.equal('blue');
+    });
 });
 
