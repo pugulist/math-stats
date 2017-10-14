@@ -28,7 +28,7 @@ let mode = numbers => {
     if (!Array.isArray(numbers)) {
         return null;
     }
-    let modes = [], count = [], maxIndex = 0;
+    let modes = new Set(), count = [], maxIndex = 0;
 
     for (let value of numbers) {
         count[value] = (count[value] || 0) + 1;
@@ -39,12 +39,12 @@ let mode = numbers => {
     for (let i of numbers) {
         if (count.hasOwnProperty(i)) {
             if (count[i] === maxIndex) {
-                modes.push(Number(i));
+                modes.add(i);
             }
         }
     }
 
-    return modes;
+    return Array.from(modes);
 };
 
 let standardDeviation = numbers => {
