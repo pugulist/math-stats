@@ -42,7 +42,7 @@ var geometricMean = stats.geometricMean(numbers); // returns 1.8171205928321397
 
 ### To do
 
-- [ ] Geometric mean ([Newton Raphson](https://en.wikipedia.org/wiki/Newton%27s_method) method for finding the nth root? :thinking:)
+- [x] Geometric mean ([Newton Raphson](https://en.wikipedia.org/wiki/Newton%27s_method) method for finding the nth root? :thinking:)
 
 ### Like it? :see_no_evil:
 

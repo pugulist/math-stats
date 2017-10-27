@@ -1,6 +1,7 @@
 'use strict';
 
-/*global module:true*/
+/*global module:true require:true*/
+let newtonRaphson = require('./math_modules/newton_raphson');
 
 let mean = numbers => {
     if (!Array.isArray(numbers)) {
@@ -84,7 +85,7 @@ let geometricMean = numbers => {
     }
     let product = numbers.reduce((pv, cv) => pv * cv);
 
-    return Math.pow(product, 1/numbers.length);
+    return Number(newtonRaphson.nthRoot(numbers.length, product));
 };
 
 module.exports = {

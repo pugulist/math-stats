@@ -65,7 +65,15 @@ describe('#stats', function() {
     });
     it('Geometric Mean', function() {
         var result = stats.geometricMean([1, 2, 3]);
-        expect(result).to.equal(1.8171205928321397);
+        expect(result).to.equal(1.81712);
+    });
+    it('Geometric Mean 2 ', function() {
+        var result = stats.geometricMean([1, 2, 3, 4]);
+        expect(result).to.equal(2.21336);
+    });
+    it('Geometric Mean 3', function() {
+        var result = stats.geometricMean([1, 2]);
+        expect(result).to.equal(1.41421);
     });
     it('Strings for mode', function() {
         var result = stats.mode(['red', 'blue', 'red', 'blue']);
