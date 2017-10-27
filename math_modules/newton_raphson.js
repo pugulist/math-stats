@@ -2,7 +2,7 @@
 
 /*global module:true*/
 
-// Calculating nth root of a
+// Calculating nth root of 'a'
 let nthRoot = (n, a) => {
     if (n == 2)
         return Math.sqrt(a).toPrecision(6);
