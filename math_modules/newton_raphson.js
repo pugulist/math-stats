@@ -9,8 +9,8 @@ let nthRoot = (n, a) => {
     else if (n === 3)
         return Math.cbrt(a).toPrecision(6);
 
-    let preResult = Math.random() % 10;
-    let eps = Math.pow(10, -6);
+    let preResult = Math.random() % 10; // Initial guess
+    let eps = Math.pow(10, -6); // Lesser the eps value, more the accuracy
 
     let delX = Number.MAX_SAFE_INTEGER;
     let result;
