@@ -4,9 +4,9 @@
 
 // Calculating nth root of 'a'
 let nthRoot = (n, a) => {
-    if (n == 2)
+    if (n === 2)
         return Math.sqrt(a).toPrecision(6);
-    else if (n == 3)
+    else if (n === 3)
         return Math.cbrt(a).toPrecision(6);
 
     let preResult = Math.random() % 10;
