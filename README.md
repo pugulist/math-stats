@@ -1,4 +1,7 @@
-Math Stats [![Build Status](https://travis-ci.org/pavanvamsi3/math-stats.svg?branch=sd_and_variance)](https://travis-ci.org/pavanvamsi3/math-stats) [![Coverage Status](https://coveralls.io/repos/github/pavanvamsi3/math-stats/badge.svg?branch=master)](https://coveralls.io/github/pavanvamsi3/math-stats?branch=master) [![Known Vulnerabilities](https://snyk.io/test/github/pavanvamsi3/math-stats/badge.svg)](https://snyk.io/test/github/pavanvamsi3/math-stats) [![NPM Downloads](https://img.shields.io/npm/dm/math-stats.svg?style=flat)](https://www.npmjs.com/package/math-stats)
+<p align="center"><img src="https://image.ibb.co/dQ9oCb/mathematica_logo.png" alt="mathematica_logo" border="0"></p>
+<hr></hr>
+
+stats  [![Build Status](https://travis-ci.org/pavanvamsi3/math-stats.svg?branch=sd_and_variance)](https://travis-ci.org/pavanvamsi3/math-stats) [![Coverage Status](https://coveralls.io/repos/github/pavanvamsi3/math-stats/badge.svg?branch=master)](https://coveralls.io/github/pavanvamsi3/math-stats?branch=master) [![Known Vulnerabilities](https://snyk.io/test/github/pavanvamsi3/math-stats/badge.svg)](https://snyk.io/test/github/pavanvamsi3/math-stats) [![NPM Downloads](https://img.shields.io/npm/dm/math-stats.svg?style=flat)](https://www.npmjs.com/package/math-stats)
 =========
 
 A small library that does statistics for your numbers
