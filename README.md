@@ -40,14 +40,6 @@ var harmonicMean = stats.harmonicMean(numbers); // returns 1.6363636363636365
 var geometricMean = stats.geometricMean(numbers); // returns 1.8171205928321397
 ```
 
-### Tests
-
-`npm test`
-
-### To do
-
-- [x] Geometric mean ([Newton Raphson](https://en.wikipedia.org/wiki/Newton%27s_method) method for finding the nth root.)
-
 ### Like it? :see_no_evil:
 
 :star: the repo and share.
@@ -57,7 +49,3 @@ var geometricMean = stats.geometricMean(numbers); // returns 1.8171205928321397
 ### License
 
 [MIT](https://github.com/pavanvamsi3/math-stats/blob/master/LICENSE) Copyright (c) [pavanvamsi](https://twitter.com/pavanvamsi)
-
-### More from the organisation
-
-* [IP Details](https://github.com/pavanvamsi3/ip_details)
