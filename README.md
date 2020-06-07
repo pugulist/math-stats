@@ -2,6 +2,7 @@
 <hr></hr>
 
 Stats  [![Build Status](https://travis-ci.org/pugulist/math-stats.svg?branch=master)](https://travis-ci.org/pugulist/math-stats) [![Coverage Status](https://coveralls.io/repos/github/pavanvamsi3/math-stats/badge.svg?branch=master)](https://coveralls.io/github/pavanvamsi3/math-stats?branch=master) [![Known Vulnerabilities](https://snyk.io/test/github/pavanvamsi3/math-stats/badge.svg)](https://snyk.io/test/github/pavanvamsi3/math-stats) [![NPM Downloads](https://img.shields.io/npm/dm/math-stats.svg?style=flat)](https://www.npmjs.com/package/math-stats)
+![Node.js CI](https://github.com/pugulist/math-stats/workflows/Node.js%20CI/badge.svg)
 =========
 
 A small library that does statistics for your numbers.
