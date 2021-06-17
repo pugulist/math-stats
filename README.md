@@ -49,5 +49,3 @@ var geometricMean = stats.geometricMean(numbers); // returns 1.8171205928321397
 ### License
 
 [MIT](https://github.com/pavanvamsi3/math-stats/blob/master/LICENSE) Copyright (c) [pavanvamsi](https://twitter.com/pavanvamsi)
-
-
