@@ -18,6 +18,10 @@ describe('#stats', function() {
         var result = stats.median(1);
         expect(result).to.equal(null);
     });
+    it('Median from numbers with more ciphers', function() {
+        var result = stats.median([1, 2, 22, 3, 33]);
+        expect(result).to.equal(3);
+    });
     it('Not an array error mean', function() {
         var result = stats.mean(1);
         expect(result).to.equal(null);
