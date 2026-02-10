@@ -15,32 +15,38 @@ describe('#stats', function() {
         expect(result).to.equal(2.5);
     });
     it('Not an array error median', function() {
-        var result = stats.median(1);
-        expect(result).to.equal(null);
+        expect(function() {
+            stats.median(1);
+        }).to.throw(TypeError, 'Input must be an array');
     });
     it('Median from numbers with more ciphers', function() {
         var result = stats.median([1, 2, 22, 3, 33]);
         expect(result).to.equal(3);
     });
     it('Not an array error mean', function() {
-        var result = stats.mean(1);
-        expect(result).to.equal(null);
+        expect(function() {
+            stats.mean(1);
+        }).to.throw(TypeError, 'Input must be an array');
     });
     it('Not an array error mode', function() {
-        var result = stats.mode(1);
-        expect(result).to.equal(null);
+        expect(function() {
+            stats.mode(1);
+        }).to.throw(TypeError, 'Input must be an array');
     });
     it('Not an array error variance', function() {
-        var result = stats.variance(1);
-        expect(result).to.equal(null);
+        expect(function() {
+            stats.variance(1);
+        }).to.throw(TypeError, 'Input must be an array');
     });
     it('Not an array error harmonic mean', function() {
-        var result = stats.harmonicMean(1);
-        expect(result).to.equal(null);
+        expect(function() {
+            stats.harmonicMean(1);
+        }).to.throw(TypeError, 'Input must be an array');
     });
     it('Not an array error geometric mean', function() {
-        var result = stats.geometricMean(1);
-        expect(result).to.equal(null);
+        expect(function() {
+            stats.geometricMean(1);
+        }).to.throw(TypeError, 'Input must be an array');
     });
     it('Mode', function() {
         var result = stats.mode([1, 2, 1, 3]);

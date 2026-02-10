@@ -5,14 +5,14 @@ let newtonRaphson = require('./math_modules/newton_raphson');
 
 let mean = numbers => {
     if (!Array.isArray(numbers)) {
-        return null;
+        throw new TypeError('Input must be an array');
     }
     return numbers.reduce((pv, cv) => pv + cv, 0) / numbers.length;
 };
 
 let median = numbers => {
     if (!Array.isArray(numbers)) {
-        return null;
+        throw new TypeError('Input must be an array');
     }
     let median = 0, numsLen = numbers.length;
     numbers = numbers.sort((a, b) => a - b);
@@ -27,7 +27,7 @@ let median = numbers => {
 
 let mode = numbers => {
     if (!Array.isArray(numbers)) {
-        return null;
+        throw new TypeError('Input must be an array');
     }
     let modes = new Set(), count = [], maxIndex = 0;
 
@@ -54,7 +54,7 @@ let standardDeviation = numbers => {
 
 let variance = numbers => {
     if (!Array.isArray(numbers)) {
-        return null;
+        throw new TypeError('Input must be an array');
     }
     let initialMean = mean(numbers);
     let varianceNumbersArray = [];
@@ -70,7 +70,7 @@ let variance = numbers => {
 
 let harmonicMean = numbers => {
     if (!Array.isArray(numbers)) {
-        return null;
+        throw new TypeError('Input must be an array');
     }
     let total = numbers.reduce(function(sum, value) {
         return sum + (1/value);
@@ -81,7 +81,7 @@ let harmonicMean = numbers => {
 
 let geometricMean = numbers => {
     if (!Array.isArray(numbers)) {
-        return null;
+        throw new TypeError('Input must be an array');
     }
     let product = numbers.reduce((pv, cv) => pv * cv);
 
