@@ -38,6 +38,11 @@ describe('#stats', function() {
             stats.variance(1);
         }).to.throw(TypeError, 'Input must be an array');
     });
+    it('Not an array error standard deviation', function() {
+        expect(function() {
+            stats.standardDeviation(1);
+        }).to.throw(TypeError, 'Input must be an array');
+    });
     it('Not an array error harmonic mean', function() {
         expect(function() {
             stats.harmonicMean(1);
