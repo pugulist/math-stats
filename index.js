@@ -89,6 +89,7 @@ let geometricMean = numbers => {
 };
 
 let range = require('./math_modules/range');
+let percentile = require('./math_modules/percentile');
 
 module.exports = {
     mean: mean,
@@ -98,5 +99,6 @@ module.exports = {
     variance: variance,
     harmonicMean: harmonicMean,
     geometricMean: geometricMean,
-    range: range
+    range: range,
+    percentile: percentile
 };
