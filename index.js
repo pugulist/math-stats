@@ -93,6 +93,7 @@ let percentile = require('./math_modules/percentile');
 let interquartileRange = require('./math_modules/interquartileRange');
 let zScore = require('./math_modules/zScore');
 let skewness = require('./math_modules/skewness');
+let kurtosis = require('./math_modules/kurtosis');
 
 module.exports = {
     mean: mean,
@@ -106,5 +107,6 @@ module.exports = {
     percentile: percentile,
     interquartileRange: interquartileRange,
     zScore: zScore,
-    skewness: skewness
+    skewness: skewness,
+    kurtosis: kurtosis
 };
