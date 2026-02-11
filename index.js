@@ -88,6 +88,8 @@ let geometricMean = numbers => {
     return Number(newtonRaphson.nthRoot(numbers.length, product));
 };
 
+let range = require('./math_modules/range');
+
 module.exports = {
     mean: mean,
     median: median,
@@ -95,5 +97,6 @@ module.exports = {
     standardDeviation: standardDeviation,
     variance: variance,
     harmonicMean: harmonicMean,
-    geometricMean: geometricMean
+    geometricMean: geometricMean,
+    range: range
 };
