@@ -91,6 +91,7 @@ let geometricMean = numbers => {
 let range = require('./math_modules/range');
 let percentile = require('./math_modules/percentile');
 let interquartileRange = require('./math_modules/interquartileRange');
+let zScore = require('./math_modules/zScore');
 
 module.exports = {
     mean: mean,
@@ -102,5 +103,6 @@ module.exports = {
     geometricMean: geometricMean,
     range: range,
     percentile: percentile,
-    interquartileRange: interquartileRange
+    interquartileRange: interquartileRange,
+    zScore: zScore
 };
