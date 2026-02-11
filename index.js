@@ -92,6 +92,7 @@ let range = require('./math_modules/range');
 let percentile = require('./math_modules/percentile');
 let interquartileRange = require('./math_modules/interquartileRange');
 let zScore = require('./math_modules/zScore');
+let skewness = require('./math_modules/skewness');
 
 module.exports = {
     mean: mean,
@@ -104,5 +105,6 @@ module.exports = {
     range: range,
     percentile: percentile,
     interquartileRange: interquartileRange,
-    zScore: zScore
+    zScore: zScore,
+    skewness: skewness
 };
