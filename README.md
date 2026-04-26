@@ -38,6 +38,19 @@ var variance = stats.variance(numbers); // returns 0.6666666666666666
 var harmonicMean = stats.harmonicMean(numbers); // returns 1.6363636363636365
 
 var geometricMean = stats.geometricMean(numbers); // returns 1.8171205928321397
+
+var range = stats.range(numbers); // returns 2
+
+var percentile50 = stats.percentile(numbers, 50); // returns 2
+var percentile75 = stats.percentile(numbers, 75); // returns 2.5
+
+var iqr = stats.interquartileRange(numbers); // returns 1
+
+var z = stats.zScore(numbers, 3); // returns 1.224744871391589
+
+var skew = stats.skewness(numbers); // returns 0
+
+var kurt = stats.kurtosis(numbers); // returns -1.5
 ```
 
 ### Like it? :see_no_evil:
