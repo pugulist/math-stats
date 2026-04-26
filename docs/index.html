@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>math-stats</title>
+  <meta name="description" content="A small JavaScript library that does statistics for your numbers — mean, median, mode, variance, standard deviation, harmonic and geometric mean.">
+  <meta property="og:title" content="math-stats">
+  <meta property="og:description" content="A small JavaScript library that does statistics for your numbers.">
+  <meta name="twitter:card" content="summary">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <span class="title">math-stats</span>
+    <nav>
+      <a href="https://github.com/pugulist/math-stats">GitHub</a>
+      <a href="https://www.npmjs.com/package/math-stats">npm</a>
+    </nav>
+  </header>
+
+  <main>
+    <p class="lede">A small JavaScript library that does statistics for your numbers. Mean, median, mode, variance, standard deviation, harmonic and geometric mean — nothing else.</p>
+
+    <pre class="install"><code>npm install math-stats</code></pre>
+
+    <h2>Usage</h2>
+    <pre><code>var stats = require('math-stats');
+
+var numbers = [1, 2, 3];
+var moreNumbers = [1, 2, 1, 3];
+
+stats.mean(numbers);              // 2
+stats.median(numbers);            // 2
+stats.mode(moreNumbers);          // [1]
+stats.mode(['red','blue','red']); // ['red']
+stats.standardDeviation(numbers); // 0.8164965809277260
+stats.variance(numbers);          // 0.6666666666666666
+stats.harmonicMean(numbers);      // 1.6363636363636365
+stats.geometricMean(numbers);     // 1.8171205928321397</code></pre>
+
+    <h2>Functions</h2>
+    <dl>
+      <dt>mean(numbers)</dt>
+      <dd>Arithmetic mean of an array of numbers.</dd>
+
+      <dt>median(numbers)</dt>
+      <dd>Middle value of a sorted array (average of the two middle values for even-length arrays).</dd>
+
+      <dt>mode(values)</dt>
+      <dd>Most frequent value(s). Works on numbers or strings.</dd>
+
+      <dt>variance(numbers)</dt>
+      <dd>Average of the squared differences from the mean.</dd>
+
+      <dt>standardDeviation(numbers)</dt>
+      <dd>Square root of the variance.</dd>
+
+      <dt>harmonicMean(numbers)</dt>
+      <dd>Reciprocal of the arithmetic mean of the reciprocals.</dd>
+
+      <dt>geometricMean(numbers)</dt>
+      <dd>nth root of the product of n numbers.</dd>
+    </dl>
+
+    <h2>Install</h2>
+    <pre><code>npm install math-stats</code></pre>
+
+    <h2>Tests</h2>
+    <pre><code>npm test</code></pre>
+  </main>
+
+  <footer>
+    MIT licensed. Built by <a href="https://github.com/pavanvamsi3">@pavanvamsi3</a>.
+  </footer>
+</body>
+</html>
