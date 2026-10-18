@@ -68,6 +68,25 @@ let variance = numbers => {
     return variance;
 };
 
+let sampleVariance = numbers => {
+    if (!Array.isArray(numbers)) {
+        return null;
+    }
+    // Undefined for fewer than two values: Bessel's correction divides by n - 1.
+    if (numbers.length < 2) {
+        return NaN;
+    }
+    let sampleMean = mean(numbers);
+    let sumOfSquares = numbers.reduce((pv, cv) => pv + (cv - sampleMean) * (cv - sampleMean), 0);
+
+    return sumOfSquares / (numbers.length - 1);
+};
+
+let sampleStandardDeviation = numbers => {
+    let numbersVariance = sampleVariance(numbers);
+    return numbersVariance === null ? null : Math.sqrt(numbersVariance);
+};
+
 let harmonicMean = numbers => {
     if (!Array.isArray(numbers)) {
         return null;
@@ -95,5 +114,7 @@ module.exports = {
     standardDeviation: standardDeviation,
     variance: variance,
     harmonicMean: harmonicMean,
-    geometricMean: geometricMean
+    geometricMean: geometricMean,
+    sampleVariance: sampleVariance,
+    sampleStandardDeviation: sampleStandardDeviation
 };
