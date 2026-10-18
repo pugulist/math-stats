@@ -1,7 +1,6 @@
 'use strict';
 
-/*global module:true require:true*/
-let newtonRaphson = require('./math_modules/newton_raphson');
+/*global module:true*/
 
 let mean = numbers => {
     if (!Array.isArray(numbers)) {
@@ -83,9 +82,18 @@ let geometricMean = numbers => {
     if (!Array.isArray(numbers)) {
         return null;
     }
-    let product = numbers.reduce((pv, cv) => pv * cv);
+    // The geometric mean is defined only for non-negative numbers.
+    if (numbers.length === 0 || numbers.some(value => value < 0)) {
+        return NaN;
+    }
+    if (numbers.some(value => value === 0)) {
+        return 0;
+    }
+    // Averaging logarithms, rather than taking the nth root of the product,
+    // keeps the intermediate value in range for very large or small inputs.
+    let logSum = numbers.reduce((pv, cv) => pv + Math.log(cv), 0);
 
-    return Number(newtonRaphson.nthRoot(numbers.length, product));
+    return Math.exp(logSum / numbers.length);
 };
 
 module.exports = {
