@@ -68,6 +68,23 @@ let variance = numbers => {
     return variance;
 };
 
+let weightedMean = (values, weights) => {
+    if (!Array.isArray(values) || !Array.isArray(weights)) {
+        return null;
+    }
+    if (values.length !== weights.length || weights.some(weight => weight < 0)) {
+        return null;
+    }
+    let weightedSum = 0, totalWeight = 0;
+
+    for (let i = 0; i < values.length; i++) {
+        weightedSum += values[i] * weights[i];
+        totalWeight += weights[i];
+    }
+    // NaN when the weights sum to zero, as mean([]) is.
+    return weightedSum / totalWeight;
+};
+
 let harmonicMean = numbers => {
     if (!Array.isArray(numbers)) {
         return null;
@@ -95,5 +112,6 @@ module.exports = {
     standardDeviation: standardDeviation,
     variance: variance,
     harmonicMean: harmonicMean,
-    geometricMean: geometricMean
+    geometricMean: geometricMean,
+    weightedMean: weightedMean
 };
