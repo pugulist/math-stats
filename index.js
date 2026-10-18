@@ -68,6 +68,22 @@ let variance = numbers => {
     return variance;
 };
 
+// Linear interpolation between closest ranks: Excel's PERCENTILE.INC,
+// NumPy's default and R's type 7. percentile(numbers, 50) is the median.
+let percentile = (numbers, p) => {
+    if (!Array.isArray(numbers) || typeof p !== 'number' || !(p >= 0 && p <= 100)) {
+        return null;
+    }
+    if (numbers.length === 0) {
+        return NaN;
+    }
+    let sorted = numbers.slice().sort((a, b) => a - b);
+    let rank = (p / 100) * (sorted.length - 1);
+    let lower = Math.floor(rank), upper = Math.ceil(rank);
+
+    return sorted[lower] + (sorted[upper] - sorted[lower]) * (rank - lower);
+};
+
 let harmonicMean = numbers => {
     if (!Array.isArray(numbers)) {
         return null;
@@ -95,5 +111,6 @@ module.exports = {
     standardDeviation: standardDeviation,
     variance: variance,
     harmonicMean: harmonicMean,
-    geometricMean: geometricMean
+    geometricMean: geometricMean,
+    percentile: percentile
 };
