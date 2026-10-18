@@ -88,5 +88,31 @@ describe('#stats', function() {
         expect(result[0]).to.equal('red');
         expect(result[1]).to.equal('blue');
     });
+
+    it('Min, max and range', function() {
+        expect(stats.min([4, 1, 9])).to.equal(1);
+        expect(stats.max([4, 1, 9])).to.equal(9);
+        expect(stats.range([4, 1, 9])).to.equal(8);
+        expect(stats.range([-3, 7])).to.equal(10);
+    });
+    it('Min, max and range of a large array', function() {
+        var numbers = [];
+        for (var i = 0; i < 200000; i++) {
+            numbers.push(i);
+        }
+        expect(stats.min(numbers)).to.equal(0);
+        expect(stats.max(numbers)).to.equal(199999);
+        expect(stats.range(numbers)).to.equal(199999);
+    });
+    it('Min, max and range of an empty array', function() {
+        expect(Object.is(stats.min([]), NaN)).to.equal(true);
+        expect(Object.is(stats.max([]), NaN)).to.equal(true);
+        expect(Object.is(stats.range([]), NaN)).to.equal(true);
+    });
+    it('Not an array error min, max and range', function() {
+        expect(stats.min(1)).to.equal(null);
+        expect(stats.max(1)).to.equal(null);
+        expect(stats.range(1)).to.equal(null);
+    });
 });
 

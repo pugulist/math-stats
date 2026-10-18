@@ -68,6 +68,33 @@ let variance = numbers => {
     return variance;
 };
 
+// min and max use a single pass rather than Math.min(...numbers), which
+// exceeds the engine's argument limit for very large arrays.
+let min = numbers => {
+    if (!Array.isArray(numbers)) {
+        return null;
+    }
+    if (numbers.length === 0) {
+        return NaN;
+    }
+    return numbers.reduce((pv, cv) => (cv < pv ? cv : pv));
+};
+
+let max = numbers => {
+    if (!Array.isArray(numbers)) {
+        return null;
+    }
+    if (numbers.length === 0) {
+        return NaN;
+    }
+    return numbers.reduce((pv, cv) => (cv > pv ? cv : pv));
+};
+
+let range = numbers => {
+    let smallest = min(numbers);
+    return smallest === null ? null : max(numbers) - smallest;
+};
+
 let harmonicMean = numbers => {
     if (!Array.isArray(numbers)) {
         return null;
@@ -95,5 +122,8 @@ module.exports = {
     standardDeviation: standardDeviation,
     variance: variance,
     harmonicMean: harmonicMean,
-    geometricMean: geometricMean
+    geometricMean: geometricMean,
+    min: min,
+    max: max,
+    range: range
 };

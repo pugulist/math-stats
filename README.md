@@ -38,6 +38,12 @@ var variance = stats.variance(numbers); // returns 0.6666666666666666
 var harmonicMean = stats.harmonicMean(numbers); // returns 1.6363636363636365
 
 var geometricMean = stats.geometricMean(numbers); // returns 1.8171205928321397
+
+var min = stats.min([4, 1, 9]); // returns 1
+
+var max = stats.max([4, 1, 9]); // returns 9
+
+var range = stats.range([4, 1, 9]); // returns 8
 ```
 
 ### Like it? :see_no_evil:
