@@ -15,7 +15,7 @@ let median = numbers => {
         return null;
     }
     let median = 0, numsLen = numbers.length;
-    numbers = numbers.sort((a, b) => a - b);
+    numbers = numbers.slice().sort((a, b) => a - b);
 
     if (numbers.length % 2 === 0) {
         median = (numbers[numsLen / 2 - 1] + numbers[numsLen / 2]) / 2;
