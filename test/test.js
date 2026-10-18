@@ -88,5 +88,10 @@ describe('#stats', function() {
         expect(result[0]).to.equal('red');
         expect(result[1]).to.equal('blue');
     });
+
+    it('Not an array error standard deviation', function() {
+        expect(stats.standardDeviation(1)).to.equal(null);
+        expect(stats.standardDeviation('1, 2, 3')).to.equal(null);
+    });
 });
 
