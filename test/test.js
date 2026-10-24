@@ -69,15 +69,15 @@ describe('#stats', function() {
     });
     it('Geometric Mean', function() {
         var result = stats.geometricMean([1, 2, 3]);
-        expect(result).to.equal(1.81712);
+        expect(result).to.be.closeTo(1.8171205928321397, 1e-12);
     });
     it('Geometric Mean 2 ', function() {
         var result = stats.geometricMean([1, 2, 3, 4]);
-        expect(result).to.equal(2.21336);
+        expect(result).to.be.closeTo(2.2133638394006434, 1e-12);
     });
     it('Geometric Mean 3', function() {
         var result = stats.geometricMean([1, 2]);
-        expect(result).to.equal(1.41421);
+        expect(result).to.be.closeTo(1.4142135623730951, 1e-12);
     });
     it('Strings for mode', function() {
         var result = stats.mode(['red', 'blue', 'red', 'blue']);
@@ -113,6 +113,66 @@ describe('#stats', function() {
         expect(stats.min(1)).to.equal(null);
         expect(stats.max(1)).to.equal(null);
         expect(stats.range(1)).to.equal(null);
+    });
+
+    it('Sample Variance', function() {
+        expect(stats.sampleVariance([1, 2, 3, 4])).to.equal(1.6666666666666667);
+    });
+    it('Sample Standard Deviation', function() {
+        expect(stats.sampleStandardDeviation([1, 2, 3, 4])).to.equal(Math.sqrt(1.6666666666666667));
+    });
+    it('Sample statistics need two values', function() {
+        expect(Object.is(stats.sampleVariance([5]), NaN)).to.equal(true);
+        expect(Object.is(stats.sampleVariance([]), NaN)).to.equal(true);
+        expect(Object.is(stats.sampleStandardDeviation([5]), NaN)).to.equal(true);
+    });
+    it('Not an array error sample statistics', function() {
+        expect(stats.sampleVariance(1)).to.equal(null);
+        expect(stats.sampleStandardDeviation(1)).to.equal(null);
+    });
+
+    it('Geometric Mean does not overflow', function() {
+        expect(stats.geometricMean([1e200, 1e200]) / 1e200).to.be.closeTo(1, 1e-12);
+    });
+    it('Geometric Mean does not underflow', function() {
+        expect(stats.geometricMean([1e-200, 1e-200]) / 1e-200).to.be.closeTo(1, 1e-12);
+    });
+    it('Geometric Mean of an empty array', function() {
+        expect(Object.is(stats.geometricMean([]), NaN)).to.equal(true);
+    });
+    it('Geometric Mean with a zero', function() {
+        expect(stats.geometricMean([0, 4, 9])).to.equal(0);
+    });
+    it('Geometric Mean with a negative value', function() {
+        expect(Object.is(stats.geometricMean([-1, 4, 9]), NaN)).to.equal(true);
+    });
+
+    it('Mode counts values named like Array properties', function() {
+        expect(stats.mode(['constructor', 'constructor', 'a'])).to.deep.equal(['constructor']);
+        expect(stats.mode(['length', 'length', 'x'])).to.deep.equal(['length']);
+    });
+    it('Mode keeps numbers and numeric strings apart', function() {
+        expect(stats.mode([1, '1', 2])).to.deep.equal([1, '1', 2]);
+        expect(stats.mode([1, '1', 1])).to.deep.equal([1]);
+    });
+    it('Mode keeps first-appearance order', function() {
+        expect(stats.mode([3, 1, 3, 1, 2])).to.deep.equal([3, 1]);
+    });
+    it('Mode of an empty array', function() {
+        expect(stats.mode([])).to.deep.equal([]);
+    });
+
+    it('Not an array error standard deviation', function() {
+        expect(stats.standardDeviation(1)).to.equal(null);
+        expect(stats.standardDeviation('1, 2, 3')).to.equal(null);
+    });
+
+    it('Median leaves its argument unchanged', function() {
+        var odd = [3, 1, 2], even = [4, 1, 3, 2];
+        expect(stats.median(odd)).to.equal(2);
+        expect(stats.median(even)).to.equal(2.5);
+        expect(odd).to.deep.equal([3, 1, 2]);
+        expect(even).to.deep.equal([4, 1, 3, 2]);
     });
 });
 
