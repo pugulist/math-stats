@@ -220,5 +220,24 @@ describe('#stats', function() {
         expect(odd).to.deep.equal([3, 1, 2]);
         expect(even).to.deep.equal([4, 1, 3, 2]);
     });
+
+    it('Exponential Moving Average', function() {
+        expect(stats.exponentialMovingAverage([1, 2, 3], 0.5)).to.deep.equal([1, 1.5, 2.25]);
+        expect(stats.exponentialMovingAverage([4], 0.3)).to.deep.equal([4]);
+        expect(stats.exponentialMovingAverage([], 0.3)).to.deep.equal([]);
+    });
+    it('Exponential Moving Average with alpha 1 copies the data', function() {
+        var numbers = [3, 1, 2];
+        var averages = stats.exponentialMovingAverage(numbers, 1);
+        expect(averages).to.deep.equal([3, 1, 2]);
+        expect(averages).to.not.equal(numbers);
+    });
+    it('Not a valid alpha error exponential moving average', function() {
+        expect(stats.exponentialMovingAverage(1, 0.5)).to.equal(null);
+        expect(stats.exponentialMovingAverage([1, 2], 0)).to.equal(null);
+        expect(stats.exponentialMovingAverage([1, 2], 1.5)).to.equal(null);
+        expect(stats.exponentialMovingAverage([1, 2], NaN)).to.equal(null);
+        expect(stats.exponentialMovingAverage([1, 2])).to.equal(null);
+    });
 });
 
