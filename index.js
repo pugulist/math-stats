@@ -38,7 +38,7 @@ let mode = numbers => {
     }
 
     for (let i of numbers) {
-        if (count.hasOwnProperty(i)) {
+        if (Object.prototype.hasOwnProperty.call(count, i)) {
             if (count[i] === maxIndex) {
                 modes.add(i);
             }
