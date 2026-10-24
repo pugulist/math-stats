@@ -104,5 +104,33 @@ describe('#stats', function() {
     it('Geometric Mean with a negative value', function() {
         expect(Object.is(stats.geometricMean([-1, 4, 9]), NaN)).to.equal(true);
     });
+
+    it('Mode counts values named like Array properties', function() {
+        expect(stats.mode(['constructor', 'constructor', 'a'])).to.deep.equal(['constructor']);
+        expect(stats.mode(['length', 'length', 'x'])).to.deep.equal(['length']);
+    });
+    it('Mode keeps numbers and numeric strings apart', function() {
+        expect(stats.mode([1, '1', 2])).to.deep.equal([1, '1', 2]);
+        expect(stats.mode([1, '1', 1])).to.deep.equal([1]);
+    });
+    it('Mode keeps first-appearance order', function() {
+        expect(stats.mode([3, 1, 3, 1, 2])).to.deep.equal([3, 1]);
+    });
+    it('Mode of an empty array', function() {
+        expect(stats.mode([])).to.deep.equal([]);
+    });
+
+    it('Not an array error standard deviation', function() {
+        expect(stats.standardDeviation(1)).to.equal(null);
+        expect(stats.standardDeviation('1, 2, 3')).to.equal(null);
+    });
+
+    it('Median leaves its argument unchanged', function() {
+        var odd = [3, 1, 2], even = [4, 1, 3, 2];
+        expect(stats.median(odd)).to.equal(2);
+        expect(stats.median(even)).to.equal(2.5);
+        expect(odd).to.deep.equal([3, 1, 2]);
+        expect(even).to.deep.equal([4, 1, 3, 2]);
+    });
 });
 
