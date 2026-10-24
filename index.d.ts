@@ -49,3 +49,7 @@ export function percentile(numbers: unknown, p: unknown): number | null;
 
 /** null when the arrays differ in length or a weight is negative; NaN when the weights sum to zero. */
 export function weightedMean(values: unknown, weights: unknown): number | null;
+
+/** Population standard deviation divided by the mean; NaN when the mean is 0 or the array is empty. */
+export function coefficientOfVariation(numbers: number[]): number;
+export function coefficientOfVariation(numbers: unknown): number | null;

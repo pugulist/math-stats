@@ -150,6 +150,18 @@ let sampleStandardDeviation = numbers => {
     return numbersVariance === null ? null : Math.sqrt(numbersVariance);
 };
 
+// The population standard deviation relative to the mean; NaN when the mean is 0.
+let coefficientOfVariation = numbers => {
+    let numbersMean = mean(numbers);
+    if (numbersMean === null) {
+        return null;
+    }
+    if (numbersMean === 0) {
+        return NaN;
+    }
+    return standardDeviation(numbers) / numbersMean;
+};
+
 let harmonicMean = numbers => {
     if (!Array.isArray(numbers)) {
         return null;
@@ -193,5 +205,6 @@ module.exports = {
     max: max,
     range: range,
     sampleVariance: sampleVariance,
-    sampleStandardDeviation: sampleStandardDeviation
+    sampleStandardDeviation: sampleStandardDeviation,
+    coefficientOfVariation: coefficientOfVariation
 };
