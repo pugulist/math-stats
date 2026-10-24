@@ -1,6 +1,5 @@
 'use strict';
 
-/*global describe it require:true __dirname:true */
 
 var expect = require('chai').expect;
 var fs = require('fs');

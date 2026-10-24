@@ -1,6 +1,5 @@
 'use strict';
 
-/*global module:true*/
 
 // Calculate the nth root of `a` using the Newton–Raphson method.
 //

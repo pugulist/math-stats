@@ -1,6 +1,5 @@
 'use strict';
 
-/*global module:true*/
 
 let mean = numbers => {
     if (!Array.isArray(numbers)) {
@@ -13,7 +12,7 @@ let median = numbers => {
     if (!Array.isArray(numbers)) {
         return null;
     }
-    let median = 0, numsLen = numbers.length;
+    let median, numsLen = numbers.length;
     numbers = numbers.slice().sort((a, b) => a - b);
 
     if (numbers.length % 2 === 0) {
