@@ -52,6 +52,8 @@ var range = stats.range([4, 1, 9]); // returns 8
 var sampleVariance = stats.sampleVariance([1, 2, 3, 4]); // returns 1.6666666666666667
 
 var sampleStandardDeviation = stats.sampleStandardDeviation([1, 2, 3, 4]); // returns 1.2909944487358056
+
+var coefficientOfVariation = stats.coefficientOfVariation([2, 4, 4, 4, 5, 5, 7, 9]); // returns 0.4
 ```
 
 ### Like it? :see_no_evil:

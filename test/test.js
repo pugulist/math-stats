@@ -220,5 +220,17 @@ describe('#stats', function() {
         expect(odd).to.deep.equal([3, 1, 2]);
         expect(even).to.deep.equal([4, 1, 3, 2]);
     });
+
+    it('Coefficient of Variation', function() {
+        expect(stats.coefficientOfVariation([2, 4, 4, 4, 5, 5, 7, 9])).to.be.closeTo(0.4, 1e-12);
+        expect(stats.coefficientOfVariation([5, 5, 5])).to.equal(0);
+    });
+    it('Coefficient of Variation with a zero mean or no values', function() {
+        expect(Object.is(stats.coefficientOfVariation([-1, 1]), NaN)).to.equal(true);
+        expect(Object.is(stats.coefficientOfVariation([]), NaN)).to.equal(true);
+    });
+    it('Not an array error coefficient of variation', function() {
+        expect(stats.coefficientOfVariation(1)).to.equal(null);
+    });
 });
 
