@@ -3,6 +3,7 @@
   "version": "0.4.1",
   "description": "Statistics for your numbers",
   "main": "index.js",
+  "types": "index.d.ts",
   "scripts": {
     "test": "mocha --reporter spec",
     "lint": "eslint index.js math_modules test",
