@@ -220,5 +220,26 @@ describe('#stats', function() {
         expect(odd).to.deep.equal([3, 1, 2]);
         expect(even).to.deep.equal([4, 1, 3, 2]);
     });
+
+    it('Quartiles', function() {
+        expect(stats.quartiles([1, 2, 3, 4])).to.deep.equal([1.75, 2.5, 3.25]);
+        expect(stats.quartiles([7])).to.deep.equal([7, 7, 7]);
+    });
+    it('Quartiles: Q2 is the median', function() {
+        [[1, 2, 3], [4, 1, 3, 2], [1, 2, 22, 3, 33]].forEach(function(numbers) {
+            expect(stats.quartiles(numbers)[1]).to.equal(stats.median(numbers));
+        });
+    });
+    it('Quartiles leave their argument unchanged', function() {
+        var numbers = [3, 1, 2];
+        stats.quartiles(numbers);
+        expect(numbers).to.deep.equal([3, 1, 2]);
+    });
+    it('Quartiles of an empty array', function() {
+        expect(stats.quartiles([]).every(function(q) { return Object.is(q, NaN); })).to.equal(true);
+    });
+    it('Not an array error quartiles', function() {
+        expect(stats.quartiles(1)).to.equal(null);
+    });
 });
 

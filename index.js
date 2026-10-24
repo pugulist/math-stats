@@ -150,6 +150,17 @@ let sampleStandardDeviation = numbers => {
     return numbersVariance === null ? null : Math.sqrt(numbersVariance);
 };
 
+// Q1, Q2 and Q3 with percentile's interpolation (R type 7), so Q2 is the median.
+let quartiles = numbers => {
+    if (!Array.isArray(numbers)) {
+        return null;
+    }
+    if (numbers.length === 0) {
+        return [NaN, NaN, NaN];
+    }
+    return [25, 50, 75].map(p => percentile(numbers, p));
+};
+
 let harmonicMean = numbers => {
     if (!Array.isArray(numbers)) {
         return null;
@@ -193,5 +204,6 @@ module.exports = {
     max: max,
     range: range,
     sampleVariance: sampleVariance,
-    sampleStandardDeviation: sampleStandardDeviation
+    sampleStandardDeviation: sampleStandardDeviation,
+    quartiles: quartiles
 };
