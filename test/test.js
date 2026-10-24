@@ -220,5 +220,21 @@ describe('#stats', function() {
         expect(odd).to.deep.equal([3, 1, 2]);
         expect(even).to.deep.equal([4, 1, 3, 2]);
     });
+
+    it('Correlation', function() {
+        expect(stats.correlation([1, 2, 3, 4, 5], [2, 4, 5, 4, 5])).to.be.closeTo(0.7745966692414834, 1e-12);
+    });
+    it('Correlation of linear series', function() {
+        expect(stats.correlation([1, 2, 3, 4], [3, 5, 7, 9])).to.be.closeTo(1, 1e-12);
+        expect(stats.correlation([1, 2, 3, 4], [8, 6, 4, 2])).to.be.closeTo(-1, 1e-12);
+    });
+    it('Correlation of a constant or empty series', function() {
+        expect(Object.is(stats.correlation([1, 2, 3], [5, 5, 5]), NaN)).to.equal(true);
+        expect(Object.is(stats.correlation([], []), NaN)).to.equal(true);
+    });
+    it('Not valid series error correlation', function() {
+        expect(stats.correlation(1, [1])).to.equal(null);
+        expect(stats.correlation([1, 2], [1])).to.equal(null);
+    });
 });
 

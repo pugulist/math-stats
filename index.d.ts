@@ -49,3 +49,7 @@ export function percentile(numbers: unknown, p: unknown): number | null;
 
 /** null when the arrays differ in length or a weight is negative; NaN when the weights sum to zero. */
 export function weightedMean(values: unknown, weights: unknown): number | null;
+
+/** Pearson correlation in [-1, 1]; NaN when either series is constant, null when the arrays differ in length. */
+export function correlation(xs: number[], ys: number[]): number | null;
+export function correlation(xs: unknown, ys: unknown): number | null;
