@@ -220,5 +220,25 @@ describe('#stats', function() {
         expect(odd).to.deep.equal([3, 1, 2]);
         expect(even).to.deep.equal([4, 1, 3, 2]);
     });
+
+    it('Covariance', function() {
+        expect(stats.covariance([1, 2, 3], [3, 2, 1])).to.be.closeTo(-2 / 3, 1e-12);
+        expect(stats.sampleCovariance([1, 2, 3], [3, 2, 1])).to.be.closeTo(-1, 1e-12);
+    });
+    it('Covariance of a series with itself is its variance', function() {
+        var xs = [2, 4, 4, 4, 5, 5, 7, 9];
+        expect(stats.covariance(xs, xs)).to.be.closeTo(stats.variance(xs), 1e-12);
+        expect(stats.sampleCovariance(xs, xs)).to.be.closeTo(stats.sampleVariance(xs), 1e-12);
+    });
+    it('Covariance edge cases', function() {
+        expect(Object.is(stats.covariance([], []), NaN)).to.equal(true);
+        expect(Object.is(stats.sampleCovariance([1], [2]), NaN)).to.equal(true);
+    });
+    it('Not valid series error covariance', function() {
+        expect(stats.covariance(1, [1])).to.equal(null);
+        expect(stats.covariance([1, 2], [1])).to.equal(null);
+        expect(stats.sampleCovariance([1], 1)).to.equal(null);
+        expect(stats.sampleCovariance([1, 2], [1])).to.equal(null);
+    });
 });
 
