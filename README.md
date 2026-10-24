@@ -37,7 +37,7 @@ var variance = stats.variance(numbers); // returns 0.6666666666666666
 
 var harmonicMean = stats.harmonicMean(numbers); // returns 1.6363636363636365
 
-var geometricMean = stats.geometricMean(numbers); // returns 1.8171205928321397
+var geometricMean = stats.geometricMean(numbers); // returns 1.8171205928321394
 
 var weightedMean = stats.weightedMean([1, 2, 3], [3, 2, 1]); // returns 1.6666666666666667
 
@@ -52,7 +52,6 @@ var range = stats.range([4, 1, 9]); // returns 8
 var sampleVariance = stats.sampleVariance([1, 2, 3, 4]); // returns 1.6666666666666667
 
 var sampleStandardDeviation = stats.sampleStandardDeviation([1, 2, 3, 4]); // returns 1.2909944487358056
-var geometricMean = stats.geometricMean(numbers); // returns 1.8171205928321394
 ```
 
 ### Like it? :see_no_evil:
