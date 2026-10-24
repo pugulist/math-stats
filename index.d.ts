@@ -49,3 +49,11 @@ export function percentile(numbers: unknown, p: unknown): number | null;
 
 /** null when the arrays differ in length or a weight is negative; NaN when the weights sum to zero. */
 export function weightedMean(values: unknown, weights: unknown): number | null;
+
+/** Population covariance; null when the arrays differ in length. */
+export function covariance(xs: number[], ys: number[]): number | null;
+export function covariance(xs: unknown, ys: unknown): number | null;
+
+/** Sample covariance (n - 1); NaN for fewer than two pairs, null when the arrays differ in length. */
+export function sampleCovariance(xs: number[], ys: number[]): number | null;
+export function sampleCovariance(xs: unknown, ys: unknown): number | null;

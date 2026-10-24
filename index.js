@@ -150,6 +150,31 @@ let sampleStandardDeviation = numbers => {
     return numbersVariance === null ? null : Math.sqrt(numbersVariance);
 };
 
+let sumOfProducts = (xs, ys) => {
+    let xsMean = mean(xs), ysMean = mean(ys);
+    return xs.reduce((pv, x, i) => pv + (x - xsMean) * (ys[i] - ysMean), 0);
+};
+
+let isPairedSeries = (xs, ys) => Array.isArray(xs) && Array.isArray(ys) && xs.length === ys.length;
+
+let covariance = (xs, ys) => {
+    if (!isPairedSeries(xs, ys)) {
+        return null;
+    }
+    return sumOfProducts(xs, ys) / xs.length;
+};
+
+let sampleCovariance = (xs, ys) => {
+    if (!isPairedSeries(xs, ys)) {
+        return null;
+    }
+    // Undefined for fewer than two pairs: Bessel's correction divides by n - 1.
+    if (xs.length < 2) {
+        return NaN;
+    }
+    return sumOfProducts(xs, ys) / (xs.length - 1);
+};
+
 let harmonicMean = numbers => {
     if (!Array.isArray(numbers)) {
         return null;
@@ -193,5 +218,7 @@ module.exports = {
     max: max,
     range: range,
     sampleVariance: sampleVariance,
-    sampleStandardDeviation: sampleStandardDeviation
+    sampleStandardDeviation: sampleStandardDeviation,
+    covariance: covariance,
+    sampleCovariance: sampleCovariance
 };
