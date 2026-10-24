@@ -150,6 +150,27 @@ let sampleStandardDeviation = numbers => {
     return numbersVariance === null ? null : Math.sqrt(numbersVariance);
 };
 
+// 1-based ranks in input order; tied values share their average rank (SciPy's rankdata default).
+let rank = numbers => {
+    if (!Array.isArray(numbers)) {
+        return null;
+    }
+    let order = numbers.map((value, index) => index).sort((a, b) => numbers[a] - numbers[b]);
+    let ranks = new Array(numbers.length);
+
+    for (let start = 0; start < order.length;) {
+        let end = start;
+        while (end + 1 < order.length && numbers[order[end + 1]] === numbers[order[start]]) {
+            end++;
+        }
+        for (let k = start; k <= end; k++) {
+            ranks[order[k]] = (start + end) / 2 + 1;
+        }
+        start = end + 1;
+    }
+    return ranks;
+};
+
 let harmonicMean = numbers => {
     if (!Array.isArray(numbers)) {
         return null;
@@ -193,5 +214,6 @@ module.exports = {
     max: max,
     range: range,
     sampleVariance: sampleVariance,
-    sampleStandardDeviation: sampleStandardDeviation
+    sampleStandardDeviation: sampleStandardDeviation,
+    rank: rank
 };
