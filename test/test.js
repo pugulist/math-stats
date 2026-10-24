@@ -220,5 +220,32 @@ describe('#stats', function() {
         expect(odd).to.deep.equal([3, 1, 2]);
         expect(even).to.deep.equal([4, 1, 3, 2]);
     });
+
+    it('Moving Average', function() {
+        expect(stats.movingAverage([1, 2, 3, 4, 5], 3)).to.deep.equal([2, 3, 4]);
+        expect(stats.movingAverage([1, 2, 3], 1)).to.deep.equal([1, 2, 3]);
+        expect(stats.movingAverage([1, 2, 3], 3)).to.deep.equal([2]);
+    });
+    it('Moving Average with a window longer than the data', function() {
+        expect(stats.movingAverage([1, 2], 3)).to.deep.equal([]);
+        expect(stats.movingAverage([], 2)).to.deep.equal([]);
+    });
+    it('Moving Average of a large array', function() {
+        var numbers = [];
+        for (var i = 0; i < 100000; i++) {
+            numbers.push(i);
+        }
+        var averages = stats.movingAverage(numbers, 10);
+        expect(averages.length).to.equal(99991);
+        expect(averages[0]).to.equal(4.5);
+        expect(averages[99990]).to.equal(99994.5);
+    });
+    it('Not a valid window error moving average', function() {
+        expect(stats.movingAverage(1, 2)).to.equal(null);
+        expect(stats.movingAverage([1, 2], 0)).to.equal(null);
+        expect(stats.movingAverage([1, 2], 1.5)).to.equal(null);
+        expect(stats.movingAverage([1, 2], '2')).to.equal(null);
+        expect(stats.movingAverage([1, 2])).to.equal(null);
+    });
 });
 
