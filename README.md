@@ -54,6 +54,19 @@ var sampleVariance = stats.sampleVariance([1, 2, 3, 4]); // returns 1.6666666666
 var sampleStandardDeviation = stats.sampleStandardDeviation([1, 2, 3, 4]); // returns 1.2909944487358056
 ```
 
+### TypeScript
+
+The package includes TypeScript declarations, so typed projects can import the
+statistics functions directly:
+
+```typescript
+import * as stats from 'math-stats';
+
+const numbers: number[] = [1, 2, 3];
+const average: number = stats.mean(numbers);
+const spread: number = stats.standardDeviation(numbers);
+```
+
 ### Like it? :see_no_evil:
 
 :star: the repo and share.
