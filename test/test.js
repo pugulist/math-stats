@@ -89,6 +89,22 @@ describe('#stats', function() {
         expect(result[1]).to.equal('blue');
     });
 
+    it('Sample Variance', function() {
+        expect(stats.sampleVariance([1, 2, 3, 4])).to.equal(1.6666666666666667);
+    });
+    it('Sample Standard Deviation', function() {
+        expect(stats.sampleStandardDeviation([1, 2, 3, 4])).to.equal(Math.sqrt(1.6666666666666667));
+    });
+    it('Sample statistics need two values', function() {
+        expect(Object.is(stats.sampleVariance([5]), NaN)).to.equal(true);
+        expect(Object.is(stats.sampleVariance([]), NaN)).to.equal(true);
+        expect(Object.is(stats.sampleStandardDeviation([5]), NaN)).to.equal(true);
+    });
+    it('Not an array error sample statistics', function() {
+        expect(stats.sampleVariance(1)).to.equal(null);
+        expect(stats.sampleStandardDeviation(1)).to.equal(null);
+    });
+
     it('Geometric Mean does not overflow', function() {
         expect(stats.geometricMean([1e200, 1e200]) / 1e200).to.be.closeTo(1, 1e-12);
     });
