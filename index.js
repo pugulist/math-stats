@@ -49,7 +49,8 @@ let mode = numbers => {
 };
 
 let standardDeviation = numbers => {
-    return Math.sqrt(variance(numbers));
+    let numbersVariance = variance(numbers);
+    return numbersVariance === null ? null : Math.sqrt(numbersVariance);
 };
 
 let variance = numbers => {
