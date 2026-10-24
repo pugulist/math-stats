@@ -103,5 +103,18 @@ describe('#stats', function() {
     it('Mode of an empty array', function() {
         expect(stats.mode([])).to.deep.equal([]);
     });
+
+    it('Not an array error standard deviation', function() {
+        expect(stats.standardDeviation(1)).to.equal(null);
+        expect(stats.standardDeviation('1, 2, 3')).to.equal(null);
+    });
+
+    it('Median leaves its argument unchanged', function() {
+        var odd = [3, 1, 2], even = [4, 1, 3, 2];
+        expect(stats.median(odd)).to.equal(2);
+        expect(stats.median(even)).to.equal(2.5);
+        expect(odd).to.deep.equal([3, 1, 2]);
+        expect(even).to.deep.equal([4, 1, 3, 2]);
+    });
 });
 
