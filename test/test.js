@@ -69,15 +69,15 @@ describe('#stats', function() {
     });
     it('Geometric Mean', function() {
         var result = stats.geometricMean([1, 2, 3]);
-        expect(result).to.equal(1.81712);
+        expect(result).to.be.closeTo(1.8171205928321397, 1e-12);
     });
     it('Geometric Mean 2 ', function() {
         var result = stats.geometricMean([1, 2, 3, 4]);
-        expect(result).to.equal(2.21336);
+        expect(result).to.be.closeTo(2.2133638394006434, 1e-12);
     });
     it('Geometric Mean 3', function() {
         var result = stats.geometricMean([1, 2]);
-        expect(result).to.equal(1.41421);
+        expect(result).to.be.closeTo(1.4142135623730951, 1e-12);
     });
     it('Strings for mode', function() {
         var result = stats.mode(['red', 'blue', 'red', 'blue']);
@@ -87,6 +87,139 @@ describe('#stats', function() {
         var result = stats.mode(['red', 'blue', 'red', 'blue']);
         expect(result[0]).to.equal('red');
         expect(result[1]).to.equal('blue');
+    });
+
+    it('Weighted Mean', function() {
+        expect(stats.weightedMean([1, 2, 3], [3, 2, 1])).to.equal(1.6666666666666667);
+        expect(stats.weightedMean([10, 20], [0, 1])).to.equal(20);
+    });
+    it('Weighted Mean with equal weights is the mean', function() {
+        expect(stats.weightedMean([1, 2, 3, 6], [2, 2, 2, 2])).to.equal(stats.mean([1, 2, 3, 6]));
+    });
+    it('Weighted Mean with zero total weight', function() {
+        expect(Object.is(stats.weightedMean([1, 2], [0, 0]), NaN)).to.equal(true);
+        expect(Object.is(stats.weightedMean([], []), NaN)).to.equal(true);
+    });
+    it('Not valid weights error', function() {
+        expect(stats.weightedMean(1, [1])).to.equal(null);
+        expect(stats.weightedMean([1], 1)).to.equal(null);
+        expect(stats.weightedMean([1, 2], [1])).to.equal(null);
+        expect(stats.weightedMean([1, 2], [1, -1])).to.equal(null);
+    });
+
+    it('Percentile', function() {
+        expect(stats.percentile([1, 2, 3, 4], 25)).to.equal(1.75);
+        expect(stats.percentile([4, 1, 3, 2], 75)).to.equal(3.25);
+        expect(stats.percentile([5, 1, 9], 0)).to.equal(1);
+        expect(stats.percentile([5, 1, 9], 100)).to.equal(9);
+        expect(stats.percentile([7], 30)).to.equal(7);
+    });
+    it('Percentile 50 is the median', function() {
+        [[1, 2, 3], [1, 2, 3, 4], [1, 2, 22, 3, 33]].forEach(function(numbers) {
+            expect(stats.percentile(numbers, 50)).to.equal(stats.median(numbers.slice()));
+        });
+    });
+    it('Percentile leaves its argument unchanged', function() {
+        var numbers = [3, 1, 2];
+        stats.percentile(numbers, 50);
+        expect(numbers).to.deep.equal([3, 1, 2]);
+    });
+    it('Percentile of an empty array', function() {
+        expect(Object.is(stats.percentile([], 50), NaN)).to.equal(true);
+    });
+    it('Not a valid percentile error', function() {
+        expect(stats.percentile(1, 50)).to.equal(null);
+        expect(stats.percentile([1, 2], -1)).to.equal(null);
+        expect(stats.percentile([1, 2], 101)).to.equal(null);
+        expect(stats.percentile([1, 2], NaN)).to.equal(null);
+        expect(stats.percentile([1, 2], '50')).to.equal(null);
+        expect(stats.percentile([1, 2])).to.equal(null);
+    });
+
+    it('Min, max and range', function() {
+        expect(stats.min([4, 1, 9])).to.equal(1);
+        expect(stats.max([4, 1, 9])).to.equal(9);
+        expect(stats.range([4, 1, 9])).to.equal(8);
+        expect(stats.range([-3, 7])).to.equal(10);
+    });
+    it('Min, max and range of a large array', function() {
+        var numbers = [];
+        for (var i = 0; i < 200000; i++) {
+            numbers.push(i);
+        }
+        expect(stats.min(numbers)).to.equal(0);
+        expect(stats.max(numbers)).to.equal(199999);
+        expect(stats.range(numbers)).to.equal(199999);
+    });
+    it('Min, max and range of an empty array', function() {
+        expect(Object.is(stats.min([]), NaN)).to.equal(true);
+        expect(Object.is(stats.max([]), NaN)).to.equal(true);
+        expect(Object.is(stats.range([]), NaN)).to.equal(true);
+    });
+    it('Not an array error min, max and range', function() {
+        expect(stats.min(1)).to.equal(null);
+        expect(stats.max(1)).to.equal(null);
+        expect(stats.range(1)).to.equal(null);
+    });
+
+    it('Sample Variance', function() {
+        expect(stats.sampleVariance([1, 2, 3, 4])).to.equal(1.6666666666666667);
+    });
+    it('Sample Standard Deviation', function() {
+        expect(stats.sampleStandardDeviation([1, 2, 3, 4])).to.equal(Math.sqrt(1.6666666666666667));
+    });
+    it('Sample statistics need two values', function() {
+        expect(Object.is(stats.sampleVariance([5]), NaN)).to.equal(true);
+        expect(Object.is(stats.sampleVariance([]), NaN)).to.equal(true);
+        expect(Object.is(stats.sampleStandardDeviation([5]), NaN)).to.equal(true);
+    });
+    it('Not an array error sample statistics', function() {
+        expect(stats.sampleVariance(1)).to.equal(null);
+        expect(stats.sampleStandardDeviation(1)).to.equal(null);
+    });
+
+    it('Geometric Mean does not overflow', function() {
+        expect(stats.geometricMean([1e200, 1e200]) / 1e200).to.be.closeTo(1, 1e-12);
+    });
+    it('Geometric Mean does not underflow', function() {
+        expect(stats.geometricMean([1e-200, 1e-200]) / 1e-200).to.be.closeTo(1, 1e-12);
+    });
+    it('Geometric Mean of an empty array', function() {
+        expect(Object.is(stats.geometricMean([]), NaN)).to.equal(true);
+    });
+    it('Geometric Mean with a zero', function() {
+        expect(stats.geometricMean([0, 4, 9])).to.equal(0);
+    });
+    it('Geometric Mean with a negative value', function() {
+        expect(Object.is(stats.geometricMean([-1, 4, 9]), NaN)).to.equal(true);
+    });
+
+    it('Mode counts values named like Array properties', function() {
+        expect(stats.mode(['constructor', 'constructor', 'a'])).to.deep.equal(['constructor']);
+        expect(stats.mode(['length', 'length', 'x'])).to.deep.equal(['length']);
+    });
+    it('Mode keeps numbers and numeric strings apart', function() {
+        expect(stats.mode([1, '1', 2])).to.deep.equal([1, '1', 2]);
+        expect(stats.mode([1, '1', 1])).to.deep.equal([1]);
+    });
+    it('Mode keeps first-appearance order', function() {
+        expect(stats.mode([3, 1, 3, 1, 2])).to.deep.equal([3, 1]);
+    });
+    it('Mode of an empty array', function() {
+        expect(stats.mode([])).to.deep.equal([]);
+    });
+
+    it('Not an array error standard deviation', function() {
+        expect(stats.standardDeviation(1)).to.equal(null);
+        expect(stats.standardDeviation('1, 2, 3')).to.equal(null);
+    });
+
+    it('Median leaves its argument unchanged', function() {
+        var odd = [3, 1, 2], even = [4, 1, 3, 2];
+        expect(stats.median(odd)).to.equal(2);
+        expect(stats.median(even)).to.equal(2.5);
+        expect(odd).to.deep.equal([3, 1, 2]);
+        expect(even).to.deep.equal([4, 1, 3, 2]);
     });
 });
 
