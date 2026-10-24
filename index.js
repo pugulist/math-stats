@@ -1,7 +1,6 @@
 'use strict';
 
-/*global module:true require:true*/
-let newtonRaphson = require('./math_modules/newton_raphson');
+/*global module:true*/
 
 let mean = numbers => {
     if (!Array.isArray(numbers)) {
@@ -15,7 +14,7 @@ let median = numbers => {
         return null;
     }
     let median = 0, numsLen = numbers.length;
-    numbers = numbers.sort((a, b) => a - b);
+    numbers = numbers.slice().sort((a, b) => a - b);
 
     if (numbers.length % 2 === 0) {
         median = (numbers[numsLen / 2 - 1] + numbers[numsLen / 2]) / 2;
@@ -29,27 +28,32 @@ let mode = numbers => {
     if (!Array.isArray(numbers)) {
         return null;
     }
-    let modes = new Set(), count = [], maxIndex = 0;
+    // A Map keys by value and type and has no inherited entries, so values
+    // such as 'constructor' or 1 and '1' are counted separately and correctly.
+    let counts = new Map(), maxCount = 0;
 
     for (let value of numbers) {
-        count[value] = (count[value] || 0) + 1;
-        if (count[value] > maxIndex)
-            maxIndex = count[value];
-    }
-
-    for (let i of numbers) {
-        if (count.hasOwnProperty(i)) {
-            if (count[i] === maxIndex) {
-                modes.add(i);
-            }
+        let count = (counts.get(value) || 0) + 1;
+        counts.set(value, count);
+        if (count > maxCount) {
+            maxCount = count;
         }
     }
 
-    return Array.from(modes);
+    // Map iteration follows insertion, so modes keep their first-appearance order.
+    let modes = [];
+    counts.forEach((count, value) => {
+        if (count === maxCount) {
+            modes.push(value);
+        }
+    });
+
+    return modes;
 };
 
 let standardDeviation = numbers => {
-    return Math.sqrt(variance(numbers));
+    let numbersVariance = variance(numbers);
+    return numbersVariance === null ? null : Math.sqrt(numbersVariance);
 };
 
 let variance = numbers => {
@@ -102,9 +106,18 @@ let geometricMean = numbers => {
     if (!Array.isArray(numbers)) {
         return null;
     }
-    let product = numbers.reduce((pv, cv) => pv * cv);
+    // The geometric mean is defined only for non-negative numbers.
+    if (numbers.length === 0 || numbers.some(value => value < 0)) {
+        return NaN;
+    }
+    if (numbers.some(value => value === 0)) {
+        return 0;
+    }
+    // Averaging logarithms, rather than taking the nth root of the product,
+    // keeps the intermediate value in range for very large or small inputs.
+    let logSum = numbers.reduce((pv, cv) => pv + Math.log(cv), 0);
 
-    return Number(newtonRaphson.nthRoot(numbers.length, product));
+    return Math.exp(logSum / numbers.length);
 };
 
 module.exports = {
