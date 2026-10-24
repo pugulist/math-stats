@@ -150,6 +150,25 @@ let sampleStandardDeviation = numbers => {
     return numbersVariance === null ? null : Math.sqrt(numbersVariance);
 };
 
+// The mean of each run of `window` consecutive values, in one pass with a running sum.
+let movingAverage = (numbers, window) => {
+    if (!Array.isArray(numbers) || !Number.isInteger(window) || window < 1) {
+        return null;
+    }
+    let averages = [], windowSum = 0;
+
+    for (let i = 0; i < numbers.length; i++) {
+        windowSum += numbers[i];
+        if (i >= window) {
+            windowSum -= numbers[i - window];
+        }
+        if (i >= window - 1) {
+            averages.push(windowSum / window);
+        }
+    }
+    return averages;
+};
+
 let harmonicMean = numbers => {
     if (!Array.isArray(numbers)) {
         return null;
@@ -193,5 +212,6 @@ module.exports = {
     max: max,
     range: range,
     sampleVariance: sampleVariance,
-    sampleStandardDeviation: sampleStandardDeviation
+    sampleStandardDeviation: sampleStandardDeviation,
+    movingAverage: movingAverage
 };

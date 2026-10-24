@@ -49,3 +49,7 @@ export function percentile(numbers: unknown, p: unknown): number | null;
 
 /** null when the arrays differ in length or a weight is negative; NaN when the weights sum to zero. */
 export function weightedMean(values: unknown, weights: unknown): number | null;
+
+/** Simple moving average: n - window + 1 values, [] when window > n; null unless window is a positive integer. */
+export function movingAverage(numbers: number[], window: number): number[] | null;
+export function movingAverage(numbers: unknown, window: unknown): number[] | null;
