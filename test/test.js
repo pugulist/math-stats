@@ -220,5 +220,17 @@ describe('#stats', function() {
         expect(odd).to.deep.equal([3, 1, 2]);
         expect(even).to.deep.equal([4, 1, 3, 2]);
     });
+
+    it('Mean Absolute Deviation', function() {
+        expect(stats.meanAbsoluteDeviation([2, 2, 3, 4, 14])).to.be.closeTo(3.6, 1e-12);
+        expect(stats.meanAbsoluteDeviation([-1, 1])).to.equal(1);
+        expect(stats.meanAbsoluteDeviation([5, 5, 5])).to.equal(0);
+    });
+    it('Mean Absolute Deviation of an empty array', function() {
+        expect(Object.is(stats.meanAbsoluteDeviation([]), NaN)).to.equal(true);
+    });
+    it('Not an array error mean absolute deviation', function() {
+        expect(stats.meanAbsoluteDeviation('1, 2')).to.equal(null);
+    });
 });
 
