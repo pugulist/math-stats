@@ -150,6 +150,19 @@ let sampleStandardDeviation = numbers => {
     return numbersVariance === null ? null : Math.sqrt(numbersVariance);
 };
 
+// Each value is alpha * value + (1 - alpha) * the previous average, seeded with the first value.
+let exponentialMovingAverage = (numbers, alpha) => {
+    if (!Array.isArray(numbers) || typeof alpha !== 'number' || !(alpha > 0 && alpha <= 1)) {
+        return null;
+    }
+    let averages = [];
+
+    for (let i = 0; i < numbers.length; i++) {
+        averages.push(i === 0 ? numbers[0] : alpha * numbers[i] + (1 - alpha) * averages[i - 1]);
+    }
+    return averages;
+};
+
 let harmonicMean = numbers => {
     if (!Array.isArray(numbers)) {
         return null;
@@ -193,5 +206,6 @@ module.exports = {
     max: max,
     range: range,
     sampleVariance: sampleVariance,
-    sampleStandardDeviation: sampleStandardDeviation
+    sampleStandardDeviation: sampleStandardDeviation,
+    exponentialMovingAverage: exponentialMovingAverage
 };

@@ -49,3 +49,7 @@ export function percentile(numbers: unknown, p: unknown): number | null;
 
 /** null when the arrays differ in length or a weight is negative; NaN when the weights sum to zero. */
 export function weightedMean(values: unknown, weights: unknown): number | null;
+
+/** Exponential moving average, one value per input; null for an alpha outside (0, 1]. */
+export function exponentialMovingAverage(numbers: number[], alpha: number): number[] | null;
+export function exponentialMovingAverage(numbers: unknown, alpha: unknown): number[] | null;
