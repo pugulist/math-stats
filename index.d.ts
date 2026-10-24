@@ -26,3 +26,26 @@ export function harmonicMean(numbers: unknown): number | null;
 
 export function geometricMean(numbers: number[]): number;
 export function geometricMean(numbers: unknown): number | null;
+
+/** Sample variance (Bessel's correction); NaN for fewer than two values. */
+export function sampleVariance(numbers: number[]): number;
+export function sampleVariance(numbers: unknown): number | null;
+
+/** Sample standard deviation; NaN for fewer than two values. */
+export function sampleStandardDeviation(numbers: number[]): number;
+export function sampleStandardDeviation(numbers: unknown): number | null;
+
+export function min(numbers: number[]): number;
+export function min(numbers: unknown): number | null;
+
+export function max(numbers: number[]): number;
+export function max(numbers: unknown): number | null;
+
+export function range(numbers: number[]): number;
+export function range(numbers: unknown): number | null;
+
+/** Linear interpolation between closest ranks; null for a p outside 0 to 100. */
+export function percentile(numbers: unknown, p: unknown): number | null;
+
+/** null when the arrays differ in length or a weight is negative; NaN when the weights sum to zero. */
+export function weightedMean(values: unknown, weights: unknown): number | null;
