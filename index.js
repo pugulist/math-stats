@@ -88,6 +88,13 @@ let geometricMean = numbers => {
     return Number(newtonRaphson.nthRoot(numbers.length, product));
 };
 
+let range = require('./math_modules/range');
+let percentile = require('./math_modules/percentile');
+let interquartileRange = require('./math_modules/interquartileRange');
+let zScore = require('./math_modules/zScore');
+let skewness = require('./math_modules/skewness');
+let kurtosis = require('./math_modules/kurtosis');
+
 module.exports = {
     mean: mean,
     median: median,
@@ -95,5 +102,11 @@ module.exports = {
     standardDeviation: standardDeviation,
     variance: variance,
     harmonicMean: harmonicMean,
-    geometricMean: geometricMean
+    geometricMean: geometricMean,
+    range: range,
+    percentile: percentile,
+    interquartileRange: interquartileRange,
+    zScore: zScore,
+    skewness: skewness,
+    kurtosis: kurtosis
 };
