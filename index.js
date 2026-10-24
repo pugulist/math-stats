@@ -150,6 +150,17 @@ let sampleStandardDeviation = numbers => {
     return numbersVariance === null ? null : Math.sqrt(numbersVariance);
 };
 
+// Drops floor(n * proportion) values from each end before averaging.
+let trimmedMean = (numbers, proportion) => {
+    if (!Array.isArray(numbers) || typeof proportion !== 'number' || !(proportion >= 0 && proportion < 0.5)) {
+        return null;
+    }
+    let cut = Math.floor(numbers.length * proportion);
+    let sorted = numbers.slice().sort((a, b) => a - b);
+
+    return mean(sorted.slice(cut, sorted.length - cut));
+};
+
 let harmonicMean = numbers => {
     if (!Array.isArray(numbers)) {
         return null;
@@ -193,5 +204,6 @@ module.exports = {
     max: max,
     range: range,
     sampleVariance: sampleVariance,
-    sampleStandardDeviation: sampleStandardDeviation
+    sampleStandardDeviation: sampleStandardDeviation,
+    trimmedMean: trimmedMean
 };

@@ -49,3 +49,7 @@ export function percentile(numbers: unknown, p: unknown): number | null;
 
 /** null when the arrays differ in length or a weight is negative; NaN when the weights sum to zero. */
 export function weightedMean(values: unknown, weights: unknown): number | null;
+
+/** Mean after dropping floor(n * proportion) values from each end; null for a proportion outside [0, 0.5). */
+export function trimmedMean(numbers: number[], proportion: number): number | null;
+export function trimmedMean(numbers: unknown, proportion: unknown): number | null;
