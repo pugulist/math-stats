@@ -150,6 +150,15 @@ let sampleStandardDeviation = numbers => {
     return numbersVariance === null ? null : Math.sqrt(numbersVariance);
 };
 
+// The average distance from the mean.
+let meanAbsoluteDeviation = numbers => {
+    if (!Array.isArray(numbers)) {
+        return null;
+    }
+    let center = mean(numbers);
+    return mean(numbers.map(value => Math.abs(value - center)));
+};
+
 let harmonicMean = numbers => {
     if (!Array.isArray(numbers)) {
         return null;
@@ -193,5 +202,6 @@ module.exports = {
     max: max,
     range: range,
     sampleVariance: sampleVariance,
-    sampleStandardDeviation: sampleStandardDeviation
+    sampleStandardDeviation: sampleStandardDeviation,
+    meanAbsoluteDeviation: meanAbsoluteDeviation
 };
