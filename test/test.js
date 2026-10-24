@@ -220,5 +220,29 @@ describe('#stats', function() {
         expect(odd).to.deep.equal([3, 1, 2]);
         expect(even).to.deep.equal([4, 1, 3, 2]);
     });
+
+    it('Trimmed Mean', function() {
+        expect(stats.trimmedMean([1, 2, 3, 4, 100], 0.2)).to.equal(3);
+        expect(stats.trimmedMean([100, 4, 3, 2, 1], 0.2)).to.equal(3);
+        expect(stats.trimmedMean([1, 2, 3, 4, 100], 0.1)).to.equal(22);
+    });
+    it('Trimmed Mean with no trimming is the mean', function() {
+        expect(stats.trimmedMean([1, 2, 3, 6], 0)).to.equal(stats.mean([1, 2, 3, 6]));
+    });
+    it('Trimmed Mean leaves its argument unchanged', function() {
+        var numbers = [3, 1, 2];
+        stats.trimmedMean(numbers, 0.4);
+        expect(numbers).to.deep.equal([3, 1, 2]);
+    });
+    it('Trimmed Mean of an empty array', function() {
+        expect(Object.is(stats.trimmedMean([], 0.1), NaN)).to.equal(true);
+    });
+    it('Not a valid proportion error trimmed mean', function() {
+        expect(stats.trimmedMean(1, 0.1)).to.equal(null);
+        expect(stats.trimmedMean([1, 2], -0.1)).to.equal(null);
+        expect(stats.trimmedMean([1, 2], 0.5)).to.equal(null);
+        expect(stats.trimmedMean([1, 2], NaN)).to.equal(null);
+        expect(stats.trimmedMean([1, 2])).to.equal(null);
+    });
 });
 
