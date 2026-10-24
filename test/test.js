@@ -89,6 +89,21 @@ describe('#stats', function() {
         expect(result[1]).to.equal('blue');
     });
 
+    it('Mode counts values named like Array properties', function() {
+        expect(stats.mode(['constructor', 'constructor', 'a'])).to.deep.equal(['constructor']);
+        expect(stats.mode(['length', 'length', 'x'])).to.deep.equal(['length']);
+    });
+    it('Mode keeps numbers and numeric strings apart', function() {
+        expect(stats.mode([1, '1', 2])).to.deep.equal([1, '1', 2]);
+        expect(stats.mode([1, '1', 1])).to.deep.equal([1]);
+    });
+    it('Mode keeps first-appearance order', function() {
+        expect(stats.mode([3, 1, 3, 1, 2])).to.deep.equal([3, 1]);
+    });
+    it('Mode of an empty array', function() {
+        expect(stats.mode([])).to.deep.equal([]);
+    });
+
     it('Not an array error standard deviation', function() {
         expect(stats.standardDeviation(1)).to.equal(null);
         expect(stats.standardDeviation('1, 2, 3')).to.equal(null);
