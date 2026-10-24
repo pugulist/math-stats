@@ -72,6 +72,22 @@ let variance = numbers => {
     return variance;
 };
 
+// Linear interpolation between closest ranks: Excel's PERCENTILE.INC,
+// NumPy's default and R's type 7. percentile(numbers, 50) is the median.
+let percentile = (numbers, p) => {
+    if (!Array.isArray(numbers) || typeof p !== 'number' || !(p >= 0 && p <= 100)) {
+        return null;
+    }
+    if (numbers.length === 0) {
+        return NaN;
+    }
+    let sorted = numbers.slice().sort((a, b) => a - b);
+    let rank = (p / 100) * (sorted.length - 1);
+    let lower = Math.floor(rank), upper = Math.ceil(rank);
+
+    return sorted[lower] + (sorted[upper] - sorted[lower]) * (rank - lower);
+};
+
 // min and max use a single pass rather than Math.min(...numbers), which
 // exceeds the engine's argument limit for very large arrays.
 let min = numbers => {
@@ -155,6 +171,7 @@ module.exports = {
     variance: variance,
     harmonicMean: harmonicMean,
     geometricMean: geometricMean,
+    percentile: percentile,
     min: min,
     max: max,
     range: range,

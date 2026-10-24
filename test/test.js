@@ -89,6 +89,35 @@ describe('#stats', function() {
         expect(result[1]).to.equal('blue');
     });
 
+    it('Percentile', function() {
+        expect(stats.percentile([1, 2, 3, 4], 25)).to.equal(1.75);
+        expect(stats.percentile([4, 1, 3, 2], 75)).to.equal(3.25);
+        expect(stats.percentile([5, 1, 9], 0)).to.equal(1);
+        expect(stats.percentile([5, 1, 9], 100)).to.equal(9);
+        expect(stats.percentile([7], 30)).to.equal(7);
+    });
+    it('Percentile 50 is the median', function() {
+        [[1, 2, 3], [1, 2, 3, 4], [1, 2, 22, 3, 33]].forEach(function(numbers) {
+            expect(stats.percentile(numbers, 50)).to.equal(stats.median(numbers.slice()));
+        });
+    });
+    it('Percentile leaves its argument unchanged', function() {
+        var numbers = [3, 1, 2];
+        stats.percentile(numbers, 50);
+        expect(numbers).to.deep.equal([3, 1, 2]);
+    });
+    it('Percentile of an empty array', function() {
+        expect(Object.is(stats.percentile([], 50), NaN)).to.equal(true);
+    });
+    it('Not a valid percentile error', function() {
+        expect(stats.percentile(1, 50)).to.equal(null);
+        expect(stats.percentile([1, 2], -1)).to.equal(null);
+        expect(stats.percentile([1, 2], 101)).to.equal(null);
+        expect(stats.percentile([1, 2], NaN)).to.equal(null);
+        expect(stats.percentile([1, 2], '50')).to.equal(null);
+        expect(stats.percentile([1, 2])).to.equal(null);
+    });
+
     it('Min, max and range', function() {
         expect(stats.min([4, 1, 9])).to.equal(1);
         expect(stats.max([4, 1, 9])).to.equal(9);
