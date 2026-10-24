@@ -49,3 +49,7 @@ export function percentile(numbers: unknown, p: unknown): number | null;
 
 /** null when the arrays differ in length or a weight is negative; NaN when the weights sum to zero. */
 export function weightedMean(values: unknown, weights: unknown): number | null;
+
+/** 1-based ranks in input order, ties sharing their average rank. */
+export function rank(numbers: number[]): number[];
+export function rank(numbers: unknown): number[] | null;

@@ -52,6 +52,8 @@ var range = stats.range([4, 1, 9]); // returns 8
 var sampleVariance = stats.sampleVariance([1, 2, 3, 4]); // returns 1.6666666666666667
 
 var sampleStandardDeviation = stats.sampleStandardDeviation([1, 2, 3, 4]); // returns 1.2909944487358056
+
+var ranks = stats.rank([10, 20, 10, 30]); // returns [1.5, 3, 1.5, 4]
 ```
 
 ### Like it? :see_no_evil:

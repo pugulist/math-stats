@@ -220,5 +220,25 @@ describe('#stats', function() {
         expect(odd).to.deep.equal([3, 1, 2]);
         expect(even).to.deep.equal([4, 1, 3, 2]);
     });
+
+    it('Rank', function() {
+        expect(stats.rank([3, 1, 2])).to.deep.equal([3, 1, 2]);
+        expect(stats.rank([-5, 0, 2.5])).to.deep.equal([1, 2, 3]);
+        expect(stats.rank([5])).to.deep.equal([1]);
+        expect(stats.rank([])).to.deep.equal([]);
+    });
+    it('Rank gives ties their average rank', function() {
+        expect(stats.rank([10, 20, 10, 30])).to.deep.equal([1.5, 3, 1.5, 4]);
+        expect(stats.rank([7, 7, 7])).to.deep.equal([2, 2, 2]);
+        expect(stats.rank([1, 2, 2, 2, 3])).to.deep.equal([1, 3, 3, 3, 5]);
+    });
+    it('Rank leaves its argument unchanged', function() {
+        var numbers = [30, 10, 20];
+        stats.rank(numbers);
+        expect(numbers).to.deep.equal([30, 10, 20]);
+    });
+    it('Not an array error rank', function() {
+        expect(stats.rank(1)).to.equal(null);
+    });
 });
 
