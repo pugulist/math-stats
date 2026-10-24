@@ -1,6 +1,5 @@
 'use strict';
 
-
 let mean = numbers => {
     if (!Array.isArray(numbers)) {
         return null;
