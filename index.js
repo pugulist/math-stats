@@ -72,6 +72,23 @@ let variance = numbers => {
     return variance;
 };
 
+let weightedMean = (values, weights) => {
+    if (!Array.isArray(values) || !Array.isArray(weights)) {
+        return null;
+    }
+    if (values.length !== weights.length || weights.some(weight => weight < 0)) {
+        return null;
+    }
+    let weightedSum = 0, totalWeight = 0;
+
+    for (let i = 0; i < values.length; i++) {
+        weightedSum += values[i] * weights[i];
+        totalWeight += weights[i];
+    }
+    // NaN when the weights sum to zero, as mean([]) is.
+    return weightedSum / totalWeight;
+};
+
 // Linear interpolation between closest ranks: Excel's PERCENTILE.INC,
 // NumPy's default and R's type 7. percentile(numbers, 50) is the median.
 let percentile = (numbers, p) => {
@@ -171,6 +188,7 @@ module.exports = {
     variance: variance,
     harmonicMean: harmonicMean,
     geometricMean: geometricMean,
+    weightedMean: weightedMean,
     percentile: percentile,
     min: min,
     max: max,

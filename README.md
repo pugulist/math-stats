@@ -39,6 +39,8 @@ var harmonicMean = stats.harmonicMean(numbers); // returns 1.6363636363636365
 
 var geometricMean = stats.geometricMean(numbers); // returns 1.8171205928321397
 
+var weightedMean = stats.weightedMean([1, 2, 3], [3, 2, 1]); // returns 1.6666666666666667
+
 var firstQuartile = stats.percentile([1, 2, 3, 4], 25); // returns 1.75
 
 var min = stats.min([4, 1, 9]); // returns 1

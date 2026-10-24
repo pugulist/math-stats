@@ -89,6 +89,24 @@ describe('#stats', function() {
         expect(result[1]).to.equal('blue');
     });
 
+    it('Weighted Mean', function() {
+        expect(stats.weightedMean([1, 2, 3], [3, 2, 1])).to.equal(1.6666666666666667);
+        expect(stats.weightedMean([10, 20], [0, 1])).to.equal(20);
+    });
+    it('Weighted Mean with equal weights is the mean', function() {
+        expect(stats.weightedMean([1, 2, 3, 6], [2, 2, 2, 2])).to.equal(stats.mean([1, 2, 3, 6]));
+    });
+    it('Weighted Mean with zero total weight', function() {
+        expect(Object.is(stats.weightedMean([1, 2], [0, 0]), NaN)).to.equal(true);
+        expect(Object.is(stats.weightedMean([], []), NaN)).to.equal(true);
+    });
+    it('Not valid weights error', function() {
+        expect(stats.weightedMean(1, [1])).to.equal(null);
+        expect(stats.weightedMean([1], 1)).to.equal(null);
+        expect(stats.weightedMean([1, 2], [1])).to.equal(null);
+        expect(stats.weightedMean([1, 2], [1, -1])).to.equal(null);
+    });
+
     it('Percentile', function() {
         expect(stats.percentile([1, 2, 3, 4], 25)).to.equal(1.75);
         expect(stats.percentile([4, 1, 3, 2], 75)).to.equal(3.25);
