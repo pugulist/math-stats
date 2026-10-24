@@ -150,6 +150,15 @@ let sampleStandardDeviation = numbers => {
     return numbersVariance === null ? null : Math.sqrt(numbersVariance);
 };
 
+// The median of the distances from the median: a spread that one outlier barely moves.
+let medianAbsoluteDeviation = numbers => {
+    if (!Array.isArray(numbers)) {
+        return null;
+    }
+    let center = median(numbers);
+    return median(numbers.map(value => Math.abs(value - center)));
+};
+
 let harmonicMean = numbers => {
     if (!Array.isArray(numbers)) {
         return null;
@@ -193,5 +202,6 @@ module.exports = {
     max: max,
     range: range,
     sampleVariance: sampleVariance,
-    sampleStandardDeviation: sampleStandardDeviation
+    sampleStandardDeviation: sampleStandardDeviation,
+    medianAbsoluteDeviation: medianAbsoluteDeviation
 };

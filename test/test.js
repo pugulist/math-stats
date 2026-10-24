@@ -220,5 +220,24 @@ describe('#stats', function() {
         expect(odd).to.deep.equal([3, 1, 2]);
         expect(even).to.deep.equal([4, 1, 3, 2]);
     });
+
+    it('Median Absolute Deviation', function() {
+        expect(stats.medianAbsoluteDeviation([1, 1, 2, 2, 4, 6, 9])).to.equal(1);
+        expect(stats.medianAbsoluteDeviation([5, 5, 5])).to.equal(0);
+    });
+    it('Median Absolute Deviation ignores one outlier', function() {
+        expect(stats.medianAbsoluteDeviation([1, 2, 3, 4, 1000])).to.equal(1);
+    });
+    it('Median Absolute Deviation leaves its argument unchanged', function() {
+        var numbers = [9, 1, 4];
+        stats.medianAbsoluteDeviation(numbers);
+        expect(numbers).to.deep.equal([9, 1, 4]);
+    });
+    it('Median Absolute Deviation of an empty array', function() {
+        expect(Object.is(stats.medianAbsoluteDeviation([]), NaN)).to.equal(true);
+    });
+    it('Not an array error median absolute deviation', function() {
+        expect(stats.medianAbsoluteDeviation(1)).to.equal(null);
+    });
 });
 
