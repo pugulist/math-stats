@@ -88,5 +88,13 @@ describe('#stats', function() {
         expect(result[0]).to.equal('red');
         expect(result[1]).to.equal('blue');
     });
+
+    it('Median leaves its argument unchanged', function() {
+        var odd = [3, 1, 2], even = [4, 1, 3, 2];
+        expect(stats.median(odd)).to.equal(2);
+        expect(stats.median(even)).to.equal(2.5);
+        expect(odd).to.deep.equal([3, 1, 2]);
+        expect(even).to.deep.equal([4, 1, 3, 2]);
+    });
 });
 
