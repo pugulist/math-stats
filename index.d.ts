@@ -49,3 +49,7 @@ export function percentile(numbers: unknown, p: unknown): number | null;
 
 /** null when the arrays differ in length or a weight is negative; NaN when the weights sum to zero. */
 export function weightedMean(values: unknown, weights: unknown): number | null;
+
+/** Q1, Q2 (the median) and Q3, interpolated like percentile; three NaN for an empty array. */
+export function quartiles(numbers: number[]): [number, number, number];
+export function quartiles(numbers: unknown): [number, number, number] | null;
