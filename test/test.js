@@ -69,15 +69,15 @@ describe('#stats', function() {
     });
     it('Geometric Mean', function() {
         var result = stats.geometricMean([1, 2, 3]);
-        expect(result).to.equal(1.81712);
+        expect(result).to.be.closeTo(1.8171205928321397, 1e-12);
     });
     it('Geometric Mean 2 ', function() {
         var result = stats.geometricMean([1, 2, 3, 4]);
-        expect(result).to.equal(2.21336);
+        expect(result).to.be.closeTo(2.2133638394006434, 1e-12);
     });
     it('Geometric Mean 3', function() {
         var result = stats.geometricMean([1, 2]);
-        expect(result).to.equal(1.41421);
+        expect(result).to.be.closeTo(1.4142135623730951, 1e-12);
     });
     it('Strings for mode', function() {
         var result = stats.mode(['red', 'blue', 'red', 'blue']);
@@ -87,6 +87,22 @@ describe('#stats', function() {
         var result = stats.mode(['red', 'blue', 'red', 'blue']);
         expect(result[0]).to.equal('red');
         expect(result[1]).to.equal('blue');
+    });
+
+    it('Geometric Mean does not overflow', function() {
+        expect(stats.geometricMean([1e200, 1e200]) / 1e200).to.be.closeTo(1, 1e-12);
+    });
+    it('Geometric Mean does not underflow', function() {
+        expect(stats.geometricMean([1e-200, 1e-200]) / 1e-200).to.be.closeTo(1, 1e-12);
+    });
+    it('Geometric Mean of an empty array', function() {
+        expect(Object.is(stats.geometricMean([]), NaN)).to.equal(true);
+    });
+    it('Geometric Mean with a zero', function() {
+        expect(stats.geometricMean([0, 4, 9])).to.equal(0);
+    });
+    it('Geometric Mean with a negative value', function() {
+        expect(Object.is(stats.geometricMean([-1, 4, 9]), NaN)).to.equal(true);
     });
 
     it('Mode counts values named like Array properties', function() {
