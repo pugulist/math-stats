@@ -150,6 +150,27 @@ let sampleStandardDeviation = numbers => {
     return numbersVariance === null ? null : Math.sqrt(numbersVariance);
 };
 
+// Pearson's correlation coefficient: NaN when either series is constant.
+let correlation = (xs, ys) => {
+    if (!Array.isArray(xs) || !Array.isArray(ys) || xs.length !== ys.length) {
+        return null;
+    }
+    if (xs.length === 0) {
+        return NaN;
+    }
+    let xsMean = mean(xs), ysMean = mean(ys);
+    let sumXY = 0, sumXX = 0, sumYY = 0;
+
+    for (let i = 0; i < xs.length; i++) {
+        let dx = xs[i] - xsMean, dy = ys[i] - ysMean;
+        sumXY += dx * dy;
+        sumXX += dx * dx;
+        sumYY += dy * dy;
+    }
+    // Clamp rounding error that can push a perfect correlation just past 1.
+    return Math.max(-1, Math.min(1, sumXY / Math.sqrt(sumXX * sumYY)));
+};
+
 let harmonicMean = numbers => {
     if (!Array.isArray(numbers)) {
         return null;
@@ -193,5 +214,6 @@ module.exports = {
     max: max,
     range: range,
     sampleVariance: sampleVariance,
-    sampleStandardDeviation: sampleStandardDeviation
+    sampleStandardDeviation: sampleStandardDeviation,
+    correlation: correlation
 };
