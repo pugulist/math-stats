@@ -61,6 +61,13 @@ var geometricMean = stats.geometricMean(numbers); // returns 1.8171205928321394
 
  [Link to npm package](https://www.npmjs.com/package/math-stats)
 
+### Maintainers
+
+- **Kannupriya Kalra** - [@kannupriyakalra](https://github.com/kannupriyakalra) ·
+  [LinkedIn](https://www.linkedin.com/in/kannupriyakalra/) · [kannupriya@llm4s.org](mailto:kannupriya@llm4s.org)
+- **Pavan Vamsi** - [@pavanvamsi3](https://github.com/pavanvamsi3) ·
+  [LinkedIn](https://www.linkedin.com/in/pavanvamsi3/)
+
 ### License
 
 [MIT](https://github.com/pavanvamsi3/math-stats/blob/master/LICENSE) Copyright (c) [pavanvamsi](https://twitter.com/pavanvamsi)
