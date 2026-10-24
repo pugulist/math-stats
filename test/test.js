@@ -1,6 +1,5 @@
 'use strict';
 
-/*global describe it require:true */
 
 var expect = require('chai').expect;
 var stats = require('../index');
