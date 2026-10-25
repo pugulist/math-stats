@@ -220,5 +220,23 @@ describe('#stats', function() {
         expect(odd).to.deep.equal([3, 1, 2]);
         expect(even).to.deep.equal([4, 1, 3, 2]);
     });
+
+    it('Sum', function() {
+        var result = stats.sum([1, 2, 3]);
+        expect(result).to.equal(6);
+    });
+    it('Sum of an empty array', function() {
+        var result = stats.sum([]);
+        expect(result).to.equal(0);
+    });
+    it('Not an array error sum', function() {
+        expect(stats.sum(1)).to.equal(null);
+        expect(stats.sum('1, 2, 3')).to.equal(null);
+    });
+    it('Sum leaves its argument unchanged', function() {
+        var numbers = [1, 2, 3];
+        expect(stats.sum(numbers)).to.equal(6);
+        expect(numbers).to.deep.equal([1, 2, 3]);
+    });
 });
 

@@ -24,6 +24,8 @@ var numbers = [1, 2, 3];
 
 var moreNumbers = [1, 2, 1, 3];
 
+var sum = stats.sum(numbers); // returns 6
+
 var mean = stats.mean(numbers); // returns 2
 
 var median = stats.median(numbers); // returns 2
