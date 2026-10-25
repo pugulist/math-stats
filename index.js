@@ -8,6 +8,13 @@ let mean = numbers => {
     return numbers.reduce((pv, cv) => pv + cv, 0) / numbers.length;
 };
 
+let sum = numbers => {
+    if (!Array.isArray(numbers)) {
+        return null;
+    }
+    return numbers.reduce((pv, cv) => pv + cv, 0);
+};
+
 let median = numbers => {
     if (!Array.isArray(numbers)) {
         return null;
@@ -180,6 +187,7 @@ let geometricMean = numbers => {
 };
 
 module.exports = {
+    sum: sum,
     mean: mean,
     median: median,
     mode: mode,

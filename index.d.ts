@@ -3,6 +3,9 @@
 // Each function returns null when its argument is not an array; the first
 // overload types the valid call, so typed callers need no null check.
 
+export function sum(numbers: number[]): number;
+export function sum(numbers: unknown): number | null;
+
 export function mean(numbers: number[]): number;
 export function mean(numbers: unknown): number | null;
 
