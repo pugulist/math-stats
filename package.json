@@ -11,7 +11,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/pavanvamsi3/math-stats.git"
+    "url": "git+https://github.com/pugulist/math-stats.git"
   },
   "keywords": [
     "Statistics",
@@ -24,9 +24,9 @@
   "author": "vamsi <pavanvamsi3@gmail.com>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/pavanvamsi3/math-stats/issues"
+    "url": "https://github.com/pugulist/math-stats/issues"
   },
-  "homepage": "https://github.com/pavanvamsi3/math-stats#readme",
+  "homepage": "https://github.com/pugulist/math-stats#readme",
   "devDependencies": {
     "@eslint/js": "^10.0.1",
     "chai": "^6.2.2",
